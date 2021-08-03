@@ -431,7 +431,9 @@ input[placeholder] {
 }
 
 .perfil {
-	background-image: url('../img/hoja.jpg');
+	background-image: url(../img/hoja-nueva.png);
+    background-size: cover;
+    background-position-y: center;
 }
 
 /* EDITAR PERFIL */
