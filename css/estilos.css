@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* - box-sizing indica cómo se deben calcular las medidas de un elemento. 
+   - por defecto CSS considera que el ancho y alto de la caja es de las propiedades width y height.
+   - El valor border-box en el box-sizing hace que el padding y el border pasen a formar parte del cálculo del ancho de la caja y no lo suman posteriormente.
+*/
+
+/* ESTILOS GENERALES */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+	text-align: center;
+}
+
+h1 {
+	margin-top: 15px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+    min-height: 100vh; /* La altura mínima que va a tener el body va a ser del 100% del viewport, es decir, de la pantalla*/
+}
+
+
+/*-----------------------------------------------------*/
+
+/* MOBILE FIRST */
+
+/* HEADER */
+header {
+	/*background-color: rgb(76 166 177);*/
+	background-color: rgb(11 116 106);
+	height: 14vh;
+}
+
+.titulo > a {
+	font-size: 18px;
+	margin-top: 23px;
+	color: #ffffff;
+    letter-spacing: 1.5px;
+}
+
+
+/* LOGO */
+
+#logo {
+	width: 25%;
+	border-radius: 10%;
+	margin: auto;
+	display: block;
+}
+
+/*-----------------------------------------------------*/
+
+/* SECTION */
+/* Centro las imágenes con margin: 0 auto y display:block */
+/* Cuando pasa el mouse por cada tarjeta, se da vuelta y muestra el nombre de la materia */
+#abc, #pizarron, #bosque, #bandera {
+	width: 70px;
+	margin: 0 auto;
+	display: block;
+}
+
+#abc {
+	width: 60px;
+	padding-top: 15px;
+}
+
+#pizarron {
+	padding-top: 20px;
+}
+
+#bosque {
+	padding-top: 5px;
+}
+
+#bandera {
+	padding-top: 5px;
+}
+
+/*-----------------------------------------------------*/
+
+/* ARTICLE */
+
+#lengua, #matematica, #naturales, #sociales {
+	height: 25vh;
+}
+
+#lengua {
+	background-image: radial-gradient(circle at 50% 53.18%, #ffe2f1 0, #ffd0e6 25%, #fdbcd8 50%, #eca8cb 75%, #dd98c3 100%);
+}
+#matematica {
+	background-image: radial-gradient(circle at 50% 53.18%, #ffffaf 0, #fff87d 50%, #cfd44a 100%);
+}
+
+#naturales {
+	background-image: radial-gradient(circle at 50% 53.18%, #f1ffbf 0, #e0ffb8 16.67%, #cbffaf 33.33%, #b4faa5 50%, #9cef9c 66.67%, #84e696 83.33%, #6ddf93 100%);
+}
+
+
+#sociales {
+	background-image: radial-gradient(circle at 50% 53.18%, #d1ffff 0, #bcf9ff 25%, #a5ebfa 50%, #8eddef 75%, #78d0e6 100%);
+}
+
+.nombre-materia {
+	letter-spacing: 3px;
+	margin-top: 15px;
+}
+
+/*-----------------------------------------------------*/
+
+/* ESTILOS PARA EL MENÚ DE NAVEGACIÓN */
+.menu {
+	display: flex;
+	justify-content: space-between;
+	font-size: 17px;
+    margin-left: 10px;
+}
+
+.menu-crayons {
+	width: 35px;
+	margin-right: 10px;
+	padding-top: 19px;
+}
+
+.menu-nav {
+	background-image: url('../img/fondo-esc.png');
+	background-size: cover;
+}
+
+
+.menu-nav > ul {
+	list-style-type: none;
+	text-align: center;
+	padding: 15px;
+}
+
+.main {
+	margin-top: 15px;
+}
+
+.list > a {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.list > a {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.materia {
+	padding: 5px;
+}
+
+/*-----------------------------------------------------*/
+
+/* MAIN */
+/* PARA EL STICKY FOOTER */
+
+main {
+	flex-grow: 1; /* flex-grow trabaja sobre el espacio sobrante 02/08/21 15:23hs GRACIAS SEÑOR*/
+}
+
+/*-----------------------------------------------------*/
+
+/* FOOTER */
+
+footer {
+	background-color: rgb(11 116 106);
+	padding: 15px;
+	position: sticky;
+	left: 0;
+	/*bottom: 0;
+*/	/*width: 100%;*/
+}
+
+footer > h5 {
+	font-size: 11px;
+	color: #ffffff;
+	letter-spacing: 1px;
+}
+
+/*-----------------------------------------------------*/
+
+/* REGISTRO Y LOGIN */
+
+/* contenedor de las fotos del usuario */
+.foto-usuario {
+	border: 1px solid #000;
+	margin: 10px;
+	text-align: center;
+	padding: 3px;
+}
+
+/* contenedor de la 1era fila de imágenes*/
+.contenedor-img {
+	/*background-color:pink;*/
+	width: 85%;
+    margin: 0 21px; /* 01-08-2021 15:09hs; Gracias Señor! */
+}
+
+/* contenedor de la 2da fila de imágenes*/
+.contenedor2-img {
+	/*background-color: lightblue;*/
+	width: 85%;
+    margin: 0 21px;
+}
+
+/* cada imagen */
+.icono {
+	width: 43px;
+	margin: 0 15px;
+}
+
+/* contiene el formulario <form></form> */
+.formulario {
+	padding: 4px;
+}
+
+/* Elegí tu foto perfil <h3></h3> */
+.foto {
+	margin-bottom: 15px;
+}
+
+/* clase de la eiqueta <form> */
+.form-reg {
+	padding: 10px;
+}
+
+label {
+	font-size: 12px;
+    font-weight: bold;
+    width: 60px;
+}
+
+input {
+	padding: 3px;
+    border: 0;
+    border-bottom: 1px solid rgb(0 0 0);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+    width: 85%;
+}
+
+input[placeholder] {
+	font-size: 12px;
+}
+
+/* contenedor de las opciones de registro y login (enlace y botón) */
+.opciones-reg, .opciones-log {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 10px;
+}
+
+/* botones para registrarte e inciar sesión */
+.opciones-reg button, .opciones-log button{
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding: 6px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	width: 110px;
+}
+
+/* botón de login */
+.opciones-log button {
+    padding: 3px;
+    width: 123px;
+}
+
+/* enlaces para login o registro */
+.opciones-reg a, .opciones-log a {
+	font-size: 13px;
+	font-weight: bold;
+	margin-top: 7px;
+}
+
+/* pseudo-selector hover para cada botón de registro y login */
+.opciones-reg button:hover, .opciones-log button:hover {
+	background-image: radial-gradient(circle at 77.07% 27.29%, #d8de81 0, #c8dd7f 12.5%, #b3d679 25%, #97cc6f 37.5%, #73bc61 50%, #4aac56 62.5%, #0aa152 75%, #009a55 87.5%, #00965d 100%);
+}
+
+/*--------------------------------------------------------------------*/
+
+/* LENGUA - JUEGOS / MATEMÁTICA - JUEGOS / CS. NATURALES - JUEGOS / CS. SOCIALES - JUEGOS*/
+
+/* contenedor de los juegos de cada materia */
+.juegos {
+	font-size: 20px;
+	margin: 15px 0;
+	letter-spacing: 3px;
+}
+
+.seccion-juegos {
+	padding: 1px;
+}
+
+.seccion-juegos > article, .seccion-abc > article{
+	border-radius: 3%;
+	padding: 5px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+/* título de cada juego */
+
+.titulo-juegos {
+	letter-spacing: 3px;
+	text-align: center;
+}
+
+/* contenedor de cada juego de lengua */
+/* ABECEDARIO */
+.abc {
+	background-image: radial-gradient(circle at -10.26% 50%, #82bddc 0, #58aad5 25%, #0696cd 50%, #0082c6 75%, #0070bf 100%);
+    padding: 1px;
+    border-radius: 25px;
+}
+
+.juego-abc {
+	width: 61%;
+    margin: 0 auto;
+}
+
+.img-abc {
+	width: 75px;
+}
+
+/* VOCALES Y CONSONANTES */
+.vyc {
+	background-image: radial-gradient(circle at 50% 50%, #ffc653 0, #fdb946 25%, #f6ab38 50%, #ef9d29 75%, #e8901b 100%);
+	padding: 1px;
+    border-radius: 25px;
+}
+
+/* COMPRENSIÓN LECTORA */
+
+.lectura {
+	background-image: linear-gradient(270deg, #ff98ff 0, #ff92ff 16.67%, #ff8bff 33.33%, #f383f9 50%, #d57bec 66.67%, #ba73e0 83.33%, #a06dd5 100%);
+	padding: 1px;
+	border-radius: 25px;
+}
+
+.belgrano-procer {
+	width: 60%;
+    border-radius: 35%;
+}
+
+/*----------------------------------------------------------*/
+
+/* ABECEDARIO  */
+
+.seccion-abc {
+	border: 1px solid rgb(0 0 0);
+    margin: 15px 15px 0px 15px;
+}
+
+.seccion-abc > article {
+	margin-bottom: 0px; 
+}
+
+.seccion-abc > article > img{
+	width: 100%
+}
+
+/* CARROUSEL DE IMÁGENES */
+
+/* clase del div que contiene los botones e imágenes */
+.carrousel {
+	max-width: 306px;
+	margin: 0 auto;
+	display: flex;
+}
+
+/* id del div que contiene las imágenes */
+
+#imagen{
+	width: 100%;
+	height: 400px;
+	background-size: cover;
+}
+
+#imagen > img {
+	width: 100%;
+}
