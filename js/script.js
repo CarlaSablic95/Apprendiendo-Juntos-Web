@@ -45,7 +45,7 @@ window.onload = function() {
 
 // Evento
 
-	btnAvanzar.addEventListener('click', sgteFoto());
+	btnAvanzar.addEventListener('click', sgteFoto);
 
 
 	// Función que cambia la foto en siguiente posición
@@ -88,7 +88,7 @@ window.onload = function() {
 
 	// // Iniciar
 
-	// renderizarImg();
+	renderizarImg();
 
 
 

@@ -400,3 +400,88 @@ input[placeholder] {
 #imagen > img {
 	width: 100%;
 }
+
+/*-------------------------------------------------*/
+/* MI PERFIL */
+
+.editar {
+	background-color: #c1ffea;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+	border-radius: 13%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.editar > h3 {
+	margin-top: 10px;
+}
+
+.icono-usuario {
+	width: 81px;
+    border: 1px solid #0b746a;
+    border-radius: 60%;
+}
+
+.perfil-icono > img {
+	width: 45px;
+	border: 1px solid black;
+	border-radius: 60%;
+}
+
+.perfil {
+	background-image: url('../img/hoja.jpg');
+}
+
+/* EDITAR PERFIL */
+
+.editar-datos {
+	background-image: url('../img/editar.jpg');
+}
+
+.form-edicion {
+	margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+.btn-editar {
+	background-color: darksalmon;
+}
+
+.cancelar {
+	color: #494949;
+	letter-spacing: 3px;
+}
+
+/* MIS TAREAS */
+
+.tareas {
+	background-color: #f8c751;
+	height: 50vh;
+	border-radius: 12px;
+}
+
+.tareas-info {
+	height: 45px;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+	
+}
+
+.tareas-info > span {
+	padding: 8px;
+	background-color: #faae69;
+	width: 173px;
+}
+
+.materia {
+	border-radius: 6px 0px 0px 0px;
+}
+
+.juego {
+	border-left: 1px solid #df9073;
+	border-radius: 0px 6px 0px 0px;
+}
