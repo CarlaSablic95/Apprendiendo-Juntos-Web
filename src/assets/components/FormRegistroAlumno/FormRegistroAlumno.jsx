@@ -43,13 +43,6 @@ const FormRegistroAlumno = () => {
 
             <div className="mb-3">
                 <div className="form-floating mb-3">
-                    <input type="text" className="form-control" id="floatingInputSurname" placeholder="Gomez" />
-                    <label htmlFor="floatingInputSurname">Apellido</label>
-                </div>
-            </div>
-
-            <div className="mb-3">
-                <div className="form-floating mb-3">
                     <input type="email" className="form-control" id="floatingInputEmail" placeholder="juan_gomez@gmail.com" />
                     <label htmlFor="floatingInputEmail">Email</label>
                 </div>
