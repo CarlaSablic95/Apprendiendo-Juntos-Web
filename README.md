@@ -61,3 +61,10 @@ Currently, two official plugins are available:
 
 # Para dejar de correr el proyecto:
 - CTRL + C = S
+
+# Dependencias:
+- Comandos:
+ -- npm i react-router-dom (React Router)
+
+## Íconos utilizados en la App:
+https://www.flaticon.es/
