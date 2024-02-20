@@ -15,15 +15,15 @@ const FormRegistroMaestro = () => {
 
     return (
         <section>
-            <form className="px-5">
+            <form className="py-4 px-5">
                 <p>Elegir avatar:</p>
                 {/* A cada div que contiene la imagen, le agrego una clase CSS condicionalmente dependiendo si elegí la imagen. Uso "plantillas literales" y "operador ternario" */}
-                <div className="mb-4 d-flex justify-content-center align-items-center">
+                <div className="mb-4 d-flex justify-content-evenly align-items-center">
                      <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "maestra" ? "border border-success" : ""}`} onClick={ () => handleImageClick("maestra") }> {/* Al clickear en la imagen, llamo a la función handleImageClick con el nombre de la imagen. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
-                        <img src={ Maestra } alt="Ícono de maestra" className="rounded-circle img-admin" />
+                        <img src={ Maestra } alt="Ícono de maestra" className="rounded-circle img-admin border" />
                     </div>
-                     <div className={`rounded-circle shadow-sm mx-4 border-2 ${selectedImage === "maestro" ? "border border-success" : ""}`} onClick={ () => handleImageClick("maestro") }> {/* Al clickear en la imagen, llamo a la función handleImageClick con el nombre de la imagen. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
-                        <img src={ Maestro } alt="Ícono de maestro" className="rounded-circle img-admin" />
+                     <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "maestro" ? "border border-success" : ""}`} onClick={ () => handleImageClick("maestro") }> {/* Al clickear en la imagen, llamo a la función handleImageClick con el nombre de la imagen. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
+                        <img src={ Maestro } alt="Ícono de maestro" className="rounded-circle img-admin border" />
                     </div>
                 </div>
             <div className="mb-3">

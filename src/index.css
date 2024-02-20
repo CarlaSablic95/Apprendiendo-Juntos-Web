@@ -1,15 +1,29 @@
 
 /* Form registro maestro */
 .card {
-    width: 50%;
+    width: 400px;
+    border-radius: 30px !important;
 }
 
-.btn-rol {
-    width: 20ch;
+.btn-maestro {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 0;
+    width: 200px;
 }
 
 .btn-alumno {
-    left: -25px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 223px;
+}
+
+
+.btn-alumno {
+    margin-left: -25px;
 }
 
 .img-admin {
