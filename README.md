@@ -32,6 +32,9 @@ Currently, two official plugins are available:
 # Correr la app:
 - npm run dev
 
+# Para buildear el proyecto:
+- npm run build
+
 # Estructura de carpetas:
 ## REACT + VITE:
 - Por fuera de la carpeta del proyecto, se encuentra el archivo README.md, donde se encuentra la documentación del proyecto.
