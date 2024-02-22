@@ -71,3 +71,15 @@ Currently, two official plugins are available:
 
 ## Íconos utilizados en la App:
 https://www.flaticon.es/
+
+------------------------------------------------------
+
+## Instalación de Firebase:
+1) -- npm install firebase
+2) Creamos un archivo de configuración donde inicializamos Firebase en nuestra app y creamos un objeto de aplicación de Firebase.
+3) Instala Firebase CLI: una herramienta de línea de comandos para utilizar con Firebase Hosting.
+    - comando: npm install -g firebase-tools
+4) Realiza la implementación en Firebase Hosting:
+    - Implementación: abrir consola y navegá al directorio de tu app web.
+       Acceder a google firebase login
+    - Servicios de Firebase utilizados: Firestore y Storage

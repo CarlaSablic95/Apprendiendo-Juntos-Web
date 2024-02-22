@@ -3,9 +3,9 @@ import './App.css';
 import Header from './assets/components/Header/Header';
 import Inicio from './assets/pages/Inicio';
 import Registro from './assets/pages/Registro';
+import IniciarSesion from './assets/pages/IniciarSesion';
 import Footer from './assets/components/Footer/Footer';
 import Juegos from './assets/pages/Juegos';
-
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
           {/* Componentes que se renderizarán cuando las rutas coincidan con la url actual */}
           <Route path='/' element={ <Inicio /> } />
           <Route path='/registro' element={ <Registro /> } />
+          <Route path='/iniciar-sesion' element={ <IniciarSesion /> } />
           <Route path='/juegos' element={ <Juegos /> } />
         </Routes>
 

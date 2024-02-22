@@ -1,7 +1,7 @@
 
 /* Form registro maestro */
 .card {
-    width: 400px;
+    max-width: 35%;
     border-radius: 30px !important;
 }
 
@@ -10,7 +10,7 @@
     border-bottom-right-radius: 0;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 0;
-    width: 200px;
+    width: 52%;
 }
 
 .btn-alumno {
@@ -18,7 +18,7 @@
     border-bottom-right-radius: 0;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-    width: 223px;
+    width: 56%;
 }
 
 
@@ -26,6 +26,14 @@
     margin-left: -25px;
 }
 
-.img-admin {
+.img-maestro, .img-alumno {
     cursor: pointer;
 }
+
+/* MEDIA QUERIES */
+/* @media (max-width: 768px) {
+    .card {
+        max-width: 80%;
+        border-radius: 30px !important;
+    }
+} */
