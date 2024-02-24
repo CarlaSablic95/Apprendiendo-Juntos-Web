@@ -14,20 +14,28 @@ const Header = () => {
                       <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/">Inicio</Link>
                       </li>
+
                       <li className="nav-item">
                         <Link className="nav-link" to="#">Sobre nosotros</Link>
                       </li>
+
                       <li className="nav-item">
                         <Link className="nav-link" to="#">Cómo funciona</Link>
                       </li>
+                      
+
                       <li className="nav-item">
                         <Link className="nav-link" to="/juegos">
                           Juegos
                         </Link>
                       </li>
 
+                      <li className="nav-item bg-warning border-2 me-3 rounded-4">
+                        <Link className="nav-link" to="/panel-admin">Panel de administración</Link>
+                      </li>
+
                       <li className="nav-item">
-                        <Link to="/registro" className="btn btn-primary">Crear cuenta</Link>
+                        <Link to="/registro" className="btn btn-primary rounded-5">Crear cuenta</Link>
                       </li>
                     </ul>
                   </div>

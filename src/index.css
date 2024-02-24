@@ -5,6 +5,10 @@
     border-radius: 30px !important;
 }
 
+.btn {
+    border: 0;
+}
+
 .btn-maestro {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -30,10 +34,23 @@
     cursor: pointer;
 }
 
-/* MEDIA QUERIES */
-/* @media (max-width: 768px) {
-    .card {
-        max-width: 80%;
-        border-radius: 30px !important;
+/* Spinner (loader) */
+.loader {
+        width: 16px;
+        height: 15px;
+        border: 3px solid #FFF;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
     }
-} */
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    } 

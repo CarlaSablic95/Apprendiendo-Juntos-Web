@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom';
-import Maestra from '../FormRegistroMaestro/images/maestra.png';
+import Avatar from './images/avatar.png';
 
-const FormLoginMaestro = () => {
+const FormLogin = () => {
     return(
         <form className="py-4 px-5">
-                <div className="d-flex flex-column justify-content-evenly align-items-center mb-2">
-                     <div className="rounded-circle shadow-sm border-2 mb-2">
-                        <img src={ Maestra } alt="Ícono de maestra" className="rounded-circle border" />
-                    </div>
-                        <p>Eugenia</p>
-                </div>
+            <div className="mb-3 text-center">
+                <img src={Avatar} alt="Ícono de avatar" />
+            </div>
 
             <div className="mb-3">
                 <div className="form-floating mb-3">
@@ -32,4 +29,4 @@ const FormLoginMaestro = () => {
     )
 }
 
-export default FormLoginMaestro;
+export default FormLogin;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import FormRegistroMaestro from '../components/FormRegistroMaestro/FormRegistroMaestro';
-import FormRegistroAlumno from '../components/FormRegistroAlumno/FormRegistroAlumno';
+import FormRegistroMaestro from '../components/Auth/FormRegistroMaestro';
+import FormRegistroAlumno from '../components/Auth/FormRegistroAlumno';
 
 const Registro = () => {
     const [mostrarFormMaestro, setmostrarFormMaestro] = useState(true);

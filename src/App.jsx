@@ -6,6 +6,7 @@ import Registro from './assets/pages/Registro';
 import IniciarSesion from './assets/pages/IniciarSesion';
 import Footer from './assets/components/Footer/Footer';
 import Juegos from './assets/pages/Juegos';
+import PanelAdmin from './assets/pages/PanelAdmin';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/registro' element={ <Registro /> } />
           <Route path='/iniciar-sesion' element={ <IniciarSesion /> } />
           <Route path='/juegos' element={ <Juegos /> } />
+          <Route path='/panel-admin' element={ <PanelAdmin /> } />
         </Routes>
 
          {/* Footer estará presente en todas las páginas de mi aplicación */}

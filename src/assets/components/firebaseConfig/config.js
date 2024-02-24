@@ -1,7 +1,9 @@
-// Import the functions you need from the SDKs you need
+// Importo las funciones que necesito desde los SDK que necesito
 import { initializeApp } from "firebase/app";
+// Inicializo Cloud Firestore
+import { getFirestore } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
+// TODO: Agrego SDK para los productos de Firebase que deso usar
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const firebaseConfig = {
@@ -13,5 +15,8 @@ const firebaseConfig = {
     appId: "1:823595718766:web:47f944bcc6c836475f6e7f"
 };
 
-// Initialize Firebase
+// Inicializo Firebase
 const app = initializeApp(firebaseConfig)
+
+// Inicializo Cloud Firestore y obtengo una referencia al servicio
+const db = getFirestore(app);

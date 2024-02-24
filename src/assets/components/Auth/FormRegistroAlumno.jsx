@@ -12,6 +12,14 @@ const FormRegistroAlumno = () => {
         setSelectedImage(imagen)
     };
 
+    // Validar datos del formulario
+    // const CrearCuenta = (e) => {
+    //     e.preventDefault();
+
+    //     console.log("Creando cuenta..");
+    // }
+
+
     return (
             <form className="py-4 px-5">
                 <p>Elegir avatar:</p>
@@ -54,7 +62,7 @@ const FormRegistroAlumno = () => {
                 </div>
             </div>
             <div className='d-flex flex-column justify-content-center align-items-center'>
-                <button type="submit" className="btn btn-primary mb-3">Crear cuenta</button>
+                <button type="button" className="btn btn-primary mb-3">Crear cuenta</button>
                 <Link to="/iniciar-sesion" className="mb-3">Ya tengo una cuenta</Link>
             </div>
             </form>
