@@ -60,7 +60,7 @@ Currently, two official plugins are available:
 
 # Instalar Bootstrap e íconos de Bootstrap (framework de CSS):
 - npm i bootstrap@5.3.2
-- npm i bootstrap-icons
+- npm i bootstrap-icons: Luego importar el archivo CSS de Bootstrap Icons en el archivo "main.jsx" --> import "bootstrap-icons/font/bootstrap-icons.css"
 
 # Para dejar de correr el proyecto:
 - CTRL + C = S

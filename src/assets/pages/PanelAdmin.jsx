@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Maestra from "../components/Auth/images/maestra.png";
-import ModalForm from "../components/ModalForm/ModalForm";
+import CrearActividad from "../components/FormActividades/CrearActividad";
+import EditarActividad from "../components/FormActividades/EditarActividad";
+import EliminarActividad from "../components/FormActividades/EliminarActividad";
 import PanelActividades from "../components/PanelActividades/PanelActividades";
 import PanelAlumnos from "../components/PanelAlumnos/PanelAlumnos";
 
@@ -38,7 +40,9 @@ const PanelAdmin = () => {
                 { mostrarPanelActividades ? <PanelActividades /> : <PanelAlumnos /> }
             </div>
             {/* Modal Form */}
-            <ModalForm />
+            <CrearActividad />
+            <EditarActividad />
+            <EliminarActividad />
             
         </section>
     )
