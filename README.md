@@ -77,3 +77,5 @@ https://www.flaticon.es/
 ## Instalación de Firebase:
 1) -- npm install firebase
 2) Creamos un archivo de configuración donde inicializamos Firebase en nuestra app y creamos un objeto de aplicación de Firebase. También importamos Firestore (Cloud Firestore - BD)
+
+-- Firestore es la manera de poder almacenar datos en una base nosql, gratuitamente.

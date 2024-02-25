@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom'
 import Maestra from './images/maestra.png';
 import Maestro from './images/maestro.png';
 
+import { db } from '../firebaseConfig/config';
+import { collection, addDoc } from "firebase/firestore";
+
 const FormRegistroMaestro = () => {
-    // Creo un estado para realizar seguimiento de el avatar seleccionada, en principio, el valor de selectedAvatar es null
+    // Creo un estado para realizar seguimiento del avatar seleccionado, en principio, el valor de selectedAvatar es null
     const [selectedAvatar, setSelectedAvatar] = useState(null);
 
     // Función que llamo al hacer click en una avatar
-    const handleAvatarClick = (avatar) => { // Toma el nombre de el avatar como argumento y
-        // actualiza el estado con el nombre de el avatar seleccionada
+    const handleAvatarClick = (avatar) => { // Toma el nombre del avatar como argumento y
+        // actualiza el estado con el nombre del avatar seleccionada
         setSelectedAvatar(avatar);
-        setValues((prevValues) => ({
-            ...prevValues,
-            avatar: avatar
+        setUsuario((prevValues) => ({
+            ...prevValues, // ... => operador de propagación se utiliza para copiarme todas las propiedades del objeto prevUsuario y
+            avatar: avatar // se agrega la nueva propiedad avatar al nuevo objeto. Guardo la imagen del usuario como parte del estado del usuario
         }))
     };
 
@@ -29,7 +32,7 @@ const FormRegistroMaestro = () => {
     })
 
     // Envío del formulario
-    const [values, setValues] = useState({ // Inicializo los valores
+    const [usuario, setUsuario] = useState({ // Inicializo los valores
         avatar: null,
         nombre:"",
         apellido:"",
@@ -38,27 +41,29 @@ const FormRegistroMaestro = () => {
     });
 
     // Destructuración
-    const { avatar, nombre, apellido, email, contrasenia } = values;
+    const { avatar, nombre, apellido, email, contrasenia } = usuario;
 
     // Función para manejar los cambios en los inputs
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         // console.log("VALUE:" + value); // Carla
         // console.log("NAME:" + name); // nombre
-        setValues({ 
-            ...values,
+        setUsuario({ 
+            ...usuario,
             [name]: value,
             avatar: selectedAvatar 
         });
     };
 
 // Detengo al envío del formulario para el manejo de errores
+// Las funciones flecha no admiten modificadores como "async", por eso se usa una función regular.
 const handleForm = (e) => {
     e.preventDefault();
 
-    // Declarar newErrors dentro de la función handleForm
+    // Declarar newErrors, objeto que contiene todos los errores de cada campo
     let newErrors = {};
 
+    // Validación de los campos
     if(!nombre.trim()) {
         newErrors.nombre = "El nombre es obligatorio";
     } 
@@ -75,7 +80,7 @@ const handleForm = (e) => {
 
     if(!contrasenia.trim()) {
         newErrors.contrasenia = "La contraseña es obligatoria";
-    } else if(contrasenia.length < 6) {
+    } else if(contrasenia.length < 6 || contrasenia.length > 6) {
         newErrors.contrasenia = "La contraseña debe contener 6 caracteres";
     }
 
@@ -85,13 +90,33 @@ const handleForm = (e) => {
     
     setError(newErrors);
 
+    // Funcion existente Object.values()
     const hasErrors = Object.values(newErrors).some(error => error !== "");
 
     if(!hasErrors) {
         setLoading(true);
-        setTimeout(() => {
-            console.log("Form enviado:", values);
+        setTimeout(async () => { // La función setTimeout() no es asincrónica por naturaleza
+            const usuarioConAvatar = {
+                ...usuario,
+                avatar: usuario.avatar + ".png"
+            };
+            console.log("Form enviado:", usuario);
             setLoading(false);
+         
+        // Guardo los datos en Firestore, dentro de una colección llamada usuarios
+            try {
+                const docRef = await addDoc(collection(db, "usuarios"), {
+                    usuario: usuarioConAvatar
+                })
+
+                console.log("Usuario creado con ID: " + docRef.id);
+            } catch (e) {
+                console.log(e)
+            } 
+
+            // Redireccionar al panel de administración
+            location.replace("./panel-admin");
+
         }, 300);
     } else {
         console.log("Hay errores de validación:", newErrors);
@@ -100,13 +125,14 @@ const handleForm = (e) => {
 
     return (
             <form className="py-4 px-5" onSubmit={ handleForm }>
-                <p>Elegir avatar:</p>
+                <p className="mb-0">Elegir avatar: <span className="text-danger">*</span></p>
+                <small className="mb-5">Es obligatorio</small>
                 {/* A cada div que contiene el avatar, le agrego una clase CSS condicionalmente dependiendo si elegí el avatar. Uso "plantillas literales" y "operador ternario" */}
                 <div className="mb-4 d-flex justify-content-evenly align-items-center">
-                     <div className={`rounded-circle shadow-sm border-2 ${selectedAvatar === "maestra" ? "border border-success" : ""}`} onClick={ () => handleAvatarClick("maestra") }> {/* Al clickear en el avatar, llamo a la función handleAvatarClick con el nombre de el avatar. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
+                     <div className={`rounded-circle shadow-sm border-2 ${selectedAvatar === "maestra" ? "border border-success" : ""}`} onClick={ () => handleAvatarClick("maestra") }> {/* Al clickear en el avatar, llamo a la función handleAvatarClick con el nombre del avatar. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
                         <img src={ Maestra } alt="Ícono de maestra" className="rounded-circle img-maestro border" />
                     </div>
-                     <div className={`rounded-circle shadow-sm border-2 ${selectedAvatar === "maestro" ? "border border-success" : ""}`} onClick={ () => handleAvatarClick("maestro") }> {/* Al clickear en el avatar, llamo a la función handleAvatarClick con el nombre de el avatar. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
+                     <div className={`rounded-circle shadow-sm border-2 ${selectedAvatar === "maestro" ? "border border-success" : ""}`} onClick={ () => handleAvatarClick("maestro") }> {/* Al clickear en el avatar, llamo a la función handleAvatarClick con el nombre del avatar. Estamos creando una función de flecha que se ejecutará SÓLO cuando ocurra el evento onClick, y no se va a ejecutar inmediatamente cuando se renderice el componente. Esto evita problemas de rendimiento. */}
                         <img src={ Maestro } alt="Ícono de maestro" className="rounded-circle img-maestro border" />
                     </div>
                 </div>

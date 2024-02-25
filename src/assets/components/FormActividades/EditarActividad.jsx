@@ -18,11 +18,9 @@ const EditarActividad = () => {
                             </div>
                         </div>
 
-                        <div className="mb-3">
-                            <div className="form-floating mb-3">
-                                <input type="text" className="form-control" id="floatingInputDescripcion" placeholder="Descripción"/>
-                                <label htmlFor="floatingInputDescripcion">Descripción</label>
-                            </div>
+                        <div className="form-floating mb-4">
+                            <textarea className="form-control" placeholder="Descripción" id="floatingTextarea" style={ { height: "100px" } }></textarea>
+                            <label htmlFor="floatingTextarea">Descripción</label>
                         </div>
 
                         <div className="mb-4">
@@ -41,7 +39,7 @@ const EditarActividad = () => {
 
                             <div className="d-flex justify-content-evenly border-0">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" className="btn btn-primary">Editar actividad</button>
+                                <button type="button" className="btn btn-primary">Aceptar</button>
                             </div>
                      </form>
                     </div>
