@@ -57,6 +57,17 @@
 
     
 /* PANEL DE ADMINISTRACIÓN */
-.img-actividad {
+.img-actividad, .img {
     filter: drop-shadow(3px 3px 3px #949494);
+}
+
+/* JUEGOS */
+/* ROMPECABEZAS */
+.pieza {
+    background-color: #c9c8c8;
+    height: 200px;
+}
+
+.grab {
+    cursor: grab;
 }

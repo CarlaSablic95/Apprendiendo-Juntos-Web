@@ -78,4 +78,6 @@ https://www.flaticon.es/
 1) -- npm install firebase
 2) Creamos un archivo de configuración donde inicializamos Firebase en nuestra app y creamos un objeto de aplicación de Firebase. También importamos Firestore (Cloud Firestore - BD)
 
--- Firestore es la manera de poder almacenar datos en una base nosql, gratuitamente.
+-- Cloud Firestore: es una base de datos de documentos NoSQL que permite almacenar, sincronizar y consultar fácilmente datos en tus apps web y para dispositivos móviles a escala global.
+
+-- Storage: Almacena y recupera archivos generados por el usuario: imágenes, audio y video, sin necesidad de usar código de servidor.

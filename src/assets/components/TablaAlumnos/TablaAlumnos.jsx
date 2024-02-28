@@ -1,6 +1,6 @@
 import Nena from "../Auth/images/nena.png";
 
-const PanelAlumnos = () => {
+const TablaAlumnos = () => {
     return (
         <div className="col-8 px-5">
             <div className="table-responsive">
@@ -31,4 +31,4 @@ const PanelAlumnos = () => {
     )
 }
 
-export default PanelAlumnos;
+export default TablaAlumnos;

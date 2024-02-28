@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
+  const [ estaLogueado, setEstaLogueado ] = useState(false);
+
+  const handleEstaLogueado = (nombre) => {
+    setEstaLogueado(nombre);
+  }
+
     return(
         <header>
               <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
@@ -35,7 +42,9 @@ const Header = () => {
                       </li>
 
                       <li className="nav-item">
-                        <Link to="/registro" className="btn btn-primary rounded-5">Crear cuenta</Link>
+                        { estaLogueado ?  
+                          (`Hola, ${ nombre }`) : ( <Link to="/registro" className="btn btn-primary rounded-5">Crear cuenta</Link>)
+                      }
                       </li>
                     </ul>
                   </div>
