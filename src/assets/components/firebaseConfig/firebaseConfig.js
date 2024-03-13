@@ -1,8 +1,8 @@
 // Importo las funciones que necesito desde los SDK que necesito
 import { initializeApp } from "firebase/app";
 // Inicializo Cloud Firestore
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-// import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
+import { getStorage, ref, list, getDownloadURL } from "firebase/storage";
 
 // TODO: Agrego SDK para los productos de Firebase que deso usar
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,28 +22,28 @@ const app = initializeApp(firebaseConfig);
 // Inicializo Cloud Firestore y obtengo una referencia al servicio
 const db = getFirestore(app);
 
-// Obtenga una referencia al servicio de almacenamiento, que se utiliza para crear referencias en su depósito de almacenamiento.
-// const storage = getStorage();
 
-// Crear una referencia de almacenamiento desde nuestro servicio de almacenamiento.
+const storage = getStorage();
 
-// const getImagenesMaestros = async () => {
-//     const imagenesRef = collection(db, "avatars"); // imagesRef ahora apunta a "avatars"
-//     const querySnapshot = await getDocs(imagenesRef);
-//     const imagenes = [];
-//     querySnapshot.forEach((doc) => {
-//         imagenes.push({
-//             id: doc.id,
-//             url: doc.data().url
-//         });
-//     });
-//     return imagenes;
-// };
-
-const crearCuenta = async (usuario) => {
-    const docRef = await addDoc(collection(db, "usuarios"), usuario);
-    return docRef.id;
-}
-
+const getImagenesMaestros = async () => {
+    const listRef = ref(storage, "avatars");
+    try {
+        const res = await list(listRef);
+        const filteredImages = res.items.filter((image) => image.name === "maestro.png" || image.name === "maestra.png");
+        
+        // Extraigo las URLs
+        const imageUrls = await Promise.all(
+            filteredImages.map(async (imageRef) => await getDownloadURL(imageRef))
+            );
+            
+            console.log("IMAGE URLS ", imageUrls);
+            
+            return imageUrls;
+            
+        } catch (error) {
+            console.log("Error al obtener las imágenes" , error);
+        }
+    }
+    
 // export { db, storage, getImagenesMaestros, crearCuenta };
-export { db, crearCuenta };
+export { app, db, getImagenesMaestros };

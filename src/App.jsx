@@ -7,8 +7,10 @@ import IniciarSesion from './assets/pages/IniciarSesion';
 import Footer from './assets/components/Footer/Footer';
 import Juegos from './assets/pages/Juegos';
 import PanelAdmin from './assets/pages/PanelAdmin';
+// import { useState } from 'react';
 
 function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>

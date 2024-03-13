@@ -20,25 +20,25 @@ const Rompecabezas = () => {
                 <div className="col-2 p-4 bg-light border">
                     <DragAndDrop>
                         <div className="grab">
-                            <img src={ Pieza3 } alt="Imagen de rompecabeza de tomate" className="img mb-3" width={ 120 } height={ 120 } />
+                            <img src={ Pieza3 } alt="Imagen de rompecabeza de tomate" className="mb-3" width={ 120 } height={ 120 } />
                         </div>
                     </DragAndDrop>
                     
                     <DragAndDrop>
                         <div className="grab">
-                            <img src={ Pieza1 } alt="Imagen de rompecabeza de tomate" className="img mb-3" width={ 120 } height={ 120 } />
+                            <img src={ Pieza1 } alt="Imagen de rompecabeza de tomate" className="mb-3" width={ 120 } height={ 120 } />
                         </div>
                     </DragAndDrop>
                     
                     <DragAndDrop>
                         <div className="grab">
-                            <img src={ Pieza4 } alt="Imagen de rompecabeza de tomate" className="img mb-3" width={ 120 } height={ 120 } />
+                            <img src={ Pieza4 } alt="Imagen de rompecabeza de tomate" className="mb-3" width={ 120 } height={ 120 } />
                         </div>
                     </DragAndDrop>
 
                     <DragAndDrop>
                         <div className="grab">
-                            <img src={ Pieza2 } alt="Imagen de rompecabeza de tomate" className="img mb-3" width={ 120 } height={ 120 } />
+                            <img src={ Pieza2 } alt="Imagen de rompecabeza de tomate" className="mb-3" width={ 120 } height={ 120 } />
                         </div>
                     </DragAndDrop>
                         

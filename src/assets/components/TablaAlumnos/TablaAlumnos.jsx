@@ -2,7 +2,7 @@ import Nena from "../Auth/images/nena.png";
 
 const TablaAlumnos = () => {
     return (
-        <div className="col-8 px-5">
+        <div className="col-8 px-5 m-auto">
             <div className="table-responsive">
                 <table className="table mt-4 text-center">
                     <thead>

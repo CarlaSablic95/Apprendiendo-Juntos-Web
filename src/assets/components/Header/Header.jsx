@@ -1,12 +1,22 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState, useEffect } from "react";
+// import { collection, onSnapshot } from "firebase/firestore";
+// import { db } from "../firebaseConfig/firebaseConfig";
 
-const Header = () => {
-  const [ estaLogueado, setEstaLogueado ] = useState(false);
+const Header = ( ) => {
+  // const [datosUsuario, setDatosUsuario] = useState(null);
 
-  const handleEstaLogueado = (nombre) => {
-    setEstaLogueado(nombre);
-  }
+  // useEffect(() => {
+  //   const fetchDatosUsuario = onSnapshot(collection(db, "usuarios"), (querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         const usuario = doc.data();
+  //         console.log("NOMBRE: ", usuario)
+  //         setDatosUsuario(usuario);
+  //       });
+  //   });
+
+  //   return () => fetchDatosUsuario();
+  // }, []);
 
     return(
         <header>
@@ -42,9 +52,7 @@ const Header = () => {
                       </li>
 
                       <li className="nav-item">
-                        { estaLogueado ?  
-                          (`Hola, ${ nombre }`) : ( <Link to="/registro" className="btn btn-primary rounded-5">Crear cuenta</Link>)
-                      }
+                      <Link to="/iniciar-sesion" className="btn btn-primary rounded-5">Iniciar sesión</Link>  
                       </li>
                     </ul>
                   </div>

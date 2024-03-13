@@ -5,6 +5,11 @@
     border-radius: 30px !important;
 }
 
+.form-control:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 0.25rem rgb(246 161 0 / 25%);
+}
+
 .btn {
     border: 0;
 }
@@ -70,4 +75,17 @@
 
 .grab {
     cursor: grab;
+}
+
+/* MEDIA QUERIES */
+@media (width <= 992px) {
+    .card {
+        max-width: 60%;
+    }
+}
+
+@media (width <= 768px) {
+    .card {
+        max-width: 85%;
+    }
 }
