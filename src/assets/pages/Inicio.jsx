@@ -65,7 +65,7 @@ const Inicio = () => {
 
 {/* // CÓMO FUNCIONA (PASOS PARA JUGAR) */}
 
-        <section className="seccion-explicacion">
+        <section className="seccion-explicacion py-5">
             <div className="container">
                  <h2>¿Cómo funciona?</h2>
 
