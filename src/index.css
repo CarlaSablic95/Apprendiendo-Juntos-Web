@@ -1,3 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* COLORES */
+:root {
+    --primary-color: #ec8900;
+    --secondary-color: #ffd25a;
+    --tertiary-color: #ffaa5a;
+    --quaternary-color: #fdc998;
+    --color-title: #3a3434;
+    --color-paragraph: #3e3e3e;
+    --white-color: #fcfcfc;
+    --dark-color: #3c3c3c;
+}
+
+/* SCROLLBAR */
+*::-webkit-scrollbar {
+    width: 13px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    border-radius: 8px;
+    border: 3px solid #ffffff;
+}
+
+/* TIPOGRAFIAS */
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.nav-link, .nav-link>a {
+    font-size: 14px;
+}
+
+h1, h2, h3, h4 {
+    color:var(--color-title);
+}
+
+p {
+    color:var(--color-paragraph);
+}
+
+/* ENLACES */
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.nav-item {
+    border-radius: 1rem;
+}
+
+.nav-item:hover {
+    background: bisque;
+}
+
+.btn-primary {
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background-color: var(--white-color);
+}
+
+/* Footer */
+.bg-dark {
+    background-color:  var(--dark-color) !important;
+}
+
+/* Inicio */
+.filtro-sombra {
+    filter: drop-shadow(3px 3px 3px #8a8a8a);
+}
+
+/* Carrusel principal */
+.seccion-principal {
+    /* background-image: url("./assets/img/image.webp"); */
+    background-image: url("./assets/img/image.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.seccion-explicacion {
+    background-color: var(--quaternary-color);
+}
+
+
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.carousel-item {
+    min-height: 70vh;
+}
+
+/* Imagen */
+.imagen-1 {
+    width: 45%;
+}
+
+.imagen-2 {
+    width: 35%;
+}
 
 /* Form registro maestro */
 .card {
@@ -8,10 +119,6 @@
 .form-control:focus {
     border-color: transparent;
     box-shadow: 0 0 0 0.25rem rgb(246 161 0 / 25%);
-}
-
-.btn {
-    border: 0;
 }
 
 .btn-maestro {

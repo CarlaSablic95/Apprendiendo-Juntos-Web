@@ -21,6 +21,8 @@ const [ selectedAvatar, setSelectedAvatar ] = useState(null);
    // Estado para controlar la imagen de perfil
   const [ loading, setLoading ] = useState(false);
 
+  const [ usuario, setUsuario ] = useState(null);
+
   const [errors, setErrors] = useState({ // errores para el formulario
     nombre: "",
     apellido: "",
@@ -66,10 +68,6 @@ const handleForm = async(e) => {
     } else if(contrasenia.length !== 8) {
         newErrors.contrasenia = "La contraseña debe contener 8 caracteres";
     }
-
-    if(!avatar) {
-        newErrors.avatar = "Seleccioná un avatar";
-    } 
     
     setErrors(newErrors);
 
@@ -79,11 +77,16 @@ const handleForm = async(e) => {
     if(!hasErrors) {
         try {
             setLoading(true);
+                localStorage.setItem("userID", email);
                 localStorage.setItem("nombre", nombre);
                 localStorage.setItem("apellido", apellido);
                 localStorage.setItem("avatar", avatar);
-            const usuario = await createUserWithEmailAndPassword(auth, email, contrasenia);
-             console.log("USUARIO: ", usuario)
+
+            const usuarioCreado = await createUserWithEmailAndPassword(auth, email, contrasenia);
+
+            const { usuario } = usuarioCreado;
+
+            console.log("USUARIO: ", usuario)
              // Creo el documento del usuario en la colección
          
              const usuarioDocRef = await addDoc(usuarios, {
@@ -91,9 +94,15 @@ const handleForm = async(e) => {
                  apellido,
                  avatar
              });
- 
+             
+             setUsuario({
+                nombre,
+                apellido,
+                avatar
+             });
+
              console.log("Usuario creado con ID: ", usuarioDocRef.id);
-             window.location.replace("./");
+            //  window.location.replace("./");
              // Redirigir a otra página o mostrar un mensaje de éxito
          } catch (error) {
             setErrors({
@@ -120,7 +129,7 @@ const handleForm = async(e) => {
 
     return (
             <form className="py-4 px-4 px-md-5" onSubmit={ handleForm }>
-                <p className="mb-2">Elegir avatar: <span className="text-danger">*</span></p>
+                <p className="mb-2">Elegir avatar:</p>
                  {/* A cada div que contiene el avatar, le agrego una clase CSS condicionalmente dependiendo si elegí el avatar. Uso "plantillas literales" y "operador ternario" */}
                  <div className="mb-4 d-flex justify-content-evenly align-items-center">
                      { imagenes.map((imageUrl) => (

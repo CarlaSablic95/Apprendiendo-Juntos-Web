@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import Avatar from './images/avatar.png';
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig/firebaseConfig";
 
 const FormLogin = () => {
     const [ loading, setLoading ] = useState(false);
@@ -43,8 +45,30 @@ const FormLogin = () => {
             try {
                 setLoading(true);
                 const auth = getAuth();
-                await signInWithEmailAndPassword(auth, email, contrasenia)
-                    window.location.href="./";
+                const userCredential = await signInWithEmailAndPassword(auth, email, contrasenia)
+
+                
+                const user = userCredential.user;
+                console.log("USER CREDENTIAL: ", user);
+
+                // Obtener datos del usuario desde Firestore
+                const userDocRef = doc(db, "usuarios", user.uid);
+
+                // console.log("USER DOC REF: ", userDocRef);
+
+                
+                const userDocSnapshot = await getDoc(userDocRef);
+
+                // console.log("USER DOC SNAPSHOT: ", userDocSnapshot);
+
+
+                const userData = userDocSnapshot.data()
+                    console.log("DATOS DE USUARIO: ", userData);
+
+                // console.log("USER DATA: ", userDocSnapshot.data());
+
+    
+                    // window.location.href="./";   
             } catch(error) {
                 let errorMessage = "";
                 if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
