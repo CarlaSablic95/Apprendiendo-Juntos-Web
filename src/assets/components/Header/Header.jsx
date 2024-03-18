@@ -49,7 +49,7 @@ const Header = ( ) => {
                         </Link>
                       </li>
 
-                      <li className="nav-item bg-warning border-2 me-3 rounded-4">
+                      <li className="nav-item bg-warning border-2 me-3 rounded-5">
                         <Link className="nav-link" to="/panel-admin">Panel de administración</Link>
                       </li>
 

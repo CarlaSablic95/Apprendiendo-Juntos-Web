@@ -1,6 +1,8 @@
 import MamaHijo from "../img/mama-hijo.webp";
 import PapaHija from "../img/papa-hija.webp";
 import Chico from "../img/chico.webp";
+import Button from "../components/Button/Button";
+import FuncionamientoApp from "../components/FuncionamientoApp/FuncionamientoApp";
 
 const Inicio = () => {
     return (
@@ -19,7 +21,8 @@ const Inicio = () => {
                                 <div className="col-6">
                                     <h1>Apprendamos Juntos</h1>
                                     <p className="pe-5 mb-0">Nuestra plataforma está pensada para que padres e hijos aprendan juntos a estudiar, a través de juegos educativos que serán un complemento a la educación escolar del niño.</p>
-                                    <p className="pe-5 mb-0">Para niños de 6 a 8 años.</p>
+                                    <p className="pe-5">Para niños de 6 a 8 años.</p>
+                                    <Button title="Conoce más" / >
                                 </div>
                                 <div className="col-6 mt-5 text-center d-flex
                         justify-content-center position-relative">
@@ -65,14 +68,14 @@ const Inicio = () => {
 
 {/* // CÓMO FUNCIONA (PASOS PARA JUGAR) */}
 
-        <section className="seccion-explicacion py-5">
+        <section className="py-5">
             <div className="container">
                  <h2>¿Cómo funciona?</h2>
-
+                 <FuncionamientoApp />
             </div>
 
         </section>
-</>
+        </>
     )
 }
 
