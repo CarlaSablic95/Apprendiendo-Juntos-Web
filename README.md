@@ -83,3 +83,7 @@ https://www.flaticon.es/
 -- Storage: Almacena y recupera archivos generados por el usuario: imágenes, audio y video, sin necesidad de usar código de servidor.
 
 -- Para mostrar las imagenes alojadas en Storage debo usar el método getDownloadURL(), porque usaba el método ref() que devuelve un objeto de tipo Reference, que contiene información sobre la ubicación de almacenamiento de la imagen, pero no las URLs de descarga, por eso no se muestran las imágenes y el registro de la consola muestra referencias en lugar de URLs.
+
+# Carrusel Splide:
+## Instalación: 
+-- npm install @splidejs/react-splide

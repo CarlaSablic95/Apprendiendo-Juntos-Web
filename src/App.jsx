@@ -9,25 +9,37 @@ import Juegos from './assets/pages/Juegos';
 import PanelAdmin from './assets/pages/PanelAdmin';
 // import { useState } from 'react';
 
+
+const Layout = ({ children }) => {
+  return (
+    <>
+      <Header />
+        { children }
+      <Footer />
+    </>
+  )
+};
+
+
+
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
       <BrowserRouter>
-      {/* Header estará presente en todas las páginas de mi aplicación */}
-       <Header />
+
         <Routes>
-          {/* Componentes que se renderizarán cuando las rutas coincidan con la url actual */}
-          <Route path='/' element={ <Inicio /> } />
-          <Route path='/registro' element={ <Registro /> } />
-          <Route path='/iniciar-sesion' element={ <IniciarSesion /> } />
-          <Route path='/juegos' element={ <Juegos /> } />
+          {/* Componentes con Header y Footer, que se renderizarán cuando las rutas coincidan con la url actual */}
+          <Route path='/' element={ <Layout><Inicio /></Layout> } />
+          <Route path='/juegos' element={ <Layout><Juegos /></Layout>  } />
+
+          {/* Componentes sin Header ni Footer */}
           <Route path='/panel-admin' element={ <PanelAdmin /> } />
+          <Route path='/registro' element={  <Registro />} />
+          <Route path='/iniciar-sesion' element={ <IniciarSesion /> } />
         </Routes>
 
-         {/* Footer estará presente en todas las páginas de mi aplicación */}
-        <Footer />
       </BrowserRouter>
     </>
   )

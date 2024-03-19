@@ -5,6 +5,7 @@ import EliminarActividad from "../components/FormActividades/EliminarActividad";
 import TablaActividades from "../components/TablaActividades/TablaActividades";
 import TablaAlumnos from "../components/TablaAlumnos/TablaAlumnos";
 import CerrarSesion from "../components/Auth/CerrarSesion";
+// import { FlaticonIcon } from "@flaticon/flaticon-uicons";
 
 // FIREBASE
 
@@ -37,33 +38,63 @@ const PanelAdmin = () => {
           avatar: usuario.photoURL, // Usar photoURL para avatar si está disponible
         });
 
-        console.log("USUARIO REGISTRADO: ", usuario.uid, " ", usuario.email, " ", usuario.displayName, " ", usuario.photoURL);
-      } 
+        console.log(
+          "USUARIO REGISTRADO: ",
+          usuario.uid,
+          " ",
+          usuario.email,
+          " ",
+          usuario.displayName,
+          " ",
+          usuario.photoURL
+        );
+      }
     });
   }, [auth]);
 
   return (
     <section className="container-fluid">
       <div className="row justify-content-between">
-        <div className="col-2 h-100 bg-secondary px-0">
-          <aside>
-            <div className="bg-dark text-white text-center p-2">
-              <h4 className="mb-0">Panel admin</h4>
-            </div>
-            {usuario && ( // Mostrar información del usuario solo si está autenticado
-              <div className="text-center text-white mb-5 py-3">
-                <img src={avatar} alt="Avatar" className="mb-3 rounded-circle border" />
-                <p className="mb-0">{nombre} {apellido}</p>
+        <div className="col-3 px-0">
+          <aside className="bg-primary d-flex flex-column justify-content-between px-3">
+            <div className="contenedor-info">
+              <div className="text-center p-2">
+                <h4 className="text-white mb-0">Panel admin</h4>
               </div>
-            )}
+              {usuario && ( // Mostrar información del usuario solo si está autenticado
+                <div className="text-center text-white mb-5 py-3">
+                  <img
+                    src={avatar}
+                    alt="Avatar"
+                    className="mb-3 rounded-circle border"
+                  />
+                  <p className="mb-0">
+                    {nombre} {apellido}
+                  </p>
+                </div>
+              )}
 
-            <div className="text-center text-white d-flex flex-column">
-              <button className="btn btn-primary" onClick={handleTablaActividades}>Actividades</button>
-              <button className="btn btn-secondary" onClick={handleTablaAlumnos}>Alumnos</button>
+              <div className="text-center text-white d-flex flex-column">
+                <div className="btn boton-panel" onClick={handleTablaActividades}>
+                  {" "}
+                     <span className="text-white">Actividades</span>
+                </div>
+                <div className="btn boton-panel" onClick={handleTablaAlumnos}>
+                  <span className="text-white">Alumnos</span>
+                </div>
+              </div>
             </div>
-
-            <div className="px-2 text-center" style={{ cursor: "pointer" }}>
-              <a className="text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#cerrarSesion"><i className="bi bi-x-circle"></i> Cerrar sesión</a>
+            <div
+              className="p-2 text-center"
+              style={{ cursor: "pointer" }}
+            >
+              <a
+                className="text-white text-decoration-none"
+                data-bs-toggle="modal"
+                data-bs-target="#cerrarSesion"
+              >
+                <i className="bi bi-x-circle"></i> Cerrar sesión
+              </a>
             </div>
           </aside>
         </div>

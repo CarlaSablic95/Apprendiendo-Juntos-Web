@@ -68,7 +68,7 @@ const FormLogin = () => {
                 // console.log("USER DATA: ", userDocSnapshot.data());
 
     
-                    // window.location.href="./";   
+                    window.location.href="./";
             } catch(error) {
                 let errorMessage = "";
                 if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
@@ -88,7 +88,7 @@ const FormLogin = () => {
     }
 
     return (
-        <form className="py-4 px-5" onSubmit={ handleLoginForm }>
+        <form className="py-5 px-5" onSubmit={ handleLoginForm }>
             <div className="mb-3 text-center">
                 <img src={Avatar} alt="Ícono de avatar" />
             </div>

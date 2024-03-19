@@ -4,6 +4,8 @@ import Nene from './images/nene.png';
 import Nena from './images/nena.png';
 import Batman from './images/batman.png';
 import TinkerBell from './images/tinker-bell.png';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 const FormRegistroAlumno = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -24,22 +26,34 @@ const FormRegistroAlumno = () => {
             <form className="py-4 px-5">
                 <p>Elegir avatar:</p>
                 <div className="mb-4 d-flex justify-content-evenly align-items-center">
-                     <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "nene" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nene") }>
-                        <img src={ Nene } alt="Ícono de nene" className="rounded-circle img-alumno border" />
-                    </div>
+                <Splide className="container-fluid" options={{ 
+                    perPage: 3,
+                    focus: "center",
+                    isLoop: true,
+                    gap: "1px",
+                    pagination: false
+                    }} aria-label="My Favorite Images">
+                    <SplideSlide className='container d-flex justify-content-center'>
+                        <img src={ Nene } alt="Ícono de nene" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === "nene" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nene") } />
+                    
+                    </SplideSlide>
 
-                    <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "batman" ? "border border-success" : ""}`} onClick={ () => handleImageClick("batman") }>
-                        <img src={ Batman } alt="Ícono de Batman" className="rounded-circle img-alumno border" />
-                    </div>
+                    <SplideSlide className='container d-flex justify-content-center'>
+                        <img src={ Batman } alt="Ícono de Batman" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === "batman" ? "border border-success" : ""}`} onClick={ () => handleImageClick("batman") } />
+                    
+                    </SplideSlide>
 
-                     <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "nena" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nena") }>
-                        <img src={ Nena } alt="Ícono de nena" className="rounded-circle img-alumno border" />
-                    </div>
+                    <SplideSlide className='container d-flex justify-content-center'>
+                        <img src={ Nena } alt="Ícono de nena" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === "nena" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nena") } />
+                    
+                    </SplideSlide>
 
-
-                     <div className={`rounded-circle shadow-sm border-2 ${selectedImage === "tinkerbell" ? "border border-success" : ""}`} onClick={ () => handleImageClick("tinkerbell") }>
-                        <img src={ TinkerBell } alt="Ícono de Tinker Bell" className="rounded-circle img-alumno border" />
-                    </div>
+                    <SplideSlide className='container d-flex justify-content-center'>
+                        <img src={ TinkerBell } alt="Ícono de Tinker Bell" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === "tinkerbell" ? "border border-success" : ""}`} onClick={ () => handleImageClick("tinkerbell") } />
+                    
+                    </SplideSlide>
+                    
+                </Splide>
                 </div>
             <div className="mb-3">
                 <div className="form-floating mb-3">

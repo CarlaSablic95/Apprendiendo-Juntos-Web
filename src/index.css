@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.2.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
 
 /* COLORES */
 :root {
-    --primary-color: #ec8900;
+    --primary-color: #FF9642;
     --secondary-color: #ffd25a;
     --tertiary-color: #ffaa5a;
     --quaternary-color: #fdc998;
-    --color-title: #3a3434;
+    --color-title: #353535;
     --color-paragraph: #3e3e3e;
     --white-color: #fefefe;
     --dark-color: #3c3c3c;
@@ -54,6 +55,7 @@ a {
 
 .nav-item:hover {
     background: bisque;
+    transition: .8s ease-out;
 }
 
 .btn-primary {
@@ -65,15 +67,24 @@ a {
     color: var(--primary-color) !important;
     border: 1px solid var(--primary-color) !important;
     background-color: var(--white-color) !important;
+    transition: .8s ease-out;
 }
 
 .bg-primary {
-    color: var(--primary-color) !important;
+    color: var(--white-color) !important;
     border: 1px solid var(--primary-color) !important;
-    background-color: var(--white-color) !important;
+    background-color: var(--primary-color) !important;
 }
 
-/* Footer */
+/* FONDOS */
+.fondo-form {
+    background-image: url("../src/assets/components/Auth/images/fondo-form.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
 .bg-footer {
     background-image: url("./assets/img/bg-footer.svg");
     background-repeat: no-repeat;
@@ -81,9 +92,41 @@ a {
     background-position: 50% 84%;
 }
 
+.card-2::before {
+    content: "- - - - - -";
+    font-weight: bolder;
+    color: var(--primary-color)
+}
+
+/* BOTONES */
+.boton-panel:hover {
+    border: 0;
+    border-radius: 1rem;
+    transition: .8s ease-out;
+    background-color: var(--tertiary-color);
+}
+
+.boton-panel:active {
+    border: none;
+}
+
+/* Carrusel */
+.splide__arrow {
+    background-color: var(--primary-color);
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.splide__arrow svg {
+    fill: var(--quaternary-color);
+    height: 1.2em;
+    width: 1.2em;
+}
+
+
 /* Inicio */
 .filtro-sombra {
-    filter: drop-shadow(3px 3px 3px #424242cd);
+    filter: drop-shadow(3px 3px 3px #575757);
 }
 
 /* Carrusel principal */
@@ -122,37 +165,21 @@ a {
 
 /* Form registro maestro */
 .card {
-    max-width: 35%;
+
     border-radius: 30px !important;
 }
+
+.title-card {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
 
 .form-control:focus {
     border-color: transparent;
     box-shadow: 0 0 0 0.25rem rgb(246 161 0 / 25%);
 }
 
-.btn-maestro {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 0;
-    width: 52%;
-}
-
-.btn-alumno {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    width: 56%;
-}
-
-
-.btn-alumno {
-    margin-left: -25px;
-}
-
-.img-maestro, .img-alumno {
+.img-alumno {
     cursor: pointer;
 }
 
@@ -179,11 +206,28 @@ a {
 
     
 /* PANEL DE ADMINISTRACIÓN */
+aside > .contenedor-info {
+    border-top-right-radius: 1rem;
+}
+
+aside {
+    min-width: 256px;
+    width: 256px;
+    height: 100vh;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+
 .img-actividad, .img {
     filter: drop-shadow(3px 3px 3px #949494);
 }
 
 /* JUEGOS */
+.columna-juegos {
+    height: 100vh;
+}
+
+
 /* ROMPECABEZAS */
 .pieza {
     background-color: #c9c8c8;
