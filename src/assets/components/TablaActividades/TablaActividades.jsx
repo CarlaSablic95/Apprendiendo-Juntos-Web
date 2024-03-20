@@ -11,6 +11,7 @@ const TablaActividades = () => {
    
     return(
         <div className="col-12 col-md-8 px-5 py-5 m-auto">
+            <div><i className="fi fi-rs-bell"></i></div>
             <i className="fi fi-rs-bell"></i>
                     { mostrarActividades ?  (
                         <div> 
@@ -43,7 +44,7 @@ const TablaActividades = () => {
                             </tbody>
                         </table>
                     </div>
-                    </div>) : ( <div className="bg-light p-4 rounded-5 text-center">
+                    </div>) : ( <div className="p-4 rounded-5 text-center" style={{ backgroundColor:"#ff96426e" }}>
                         <p className="text-center">No hay actividades para mostrar</p>
                         <button className="btn rounded-5 bg-primary" data-bs-toggle="modal" data-bs-target="#crearActividadForm">
                             <i className="bi bi-patch-plus text-white fs-2"></i>

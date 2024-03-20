@@ -75,17 +75,17 @@ const PanelAdmin = () => {
               )}
 
               <div className="text-center text-white d-flex flex-column">
-                <div className="btn boton-panel" onClick={handleTablaActividades}>
+                <div className="p-2 boton-panel" style={{ cursor: "pointer" }} onClick={handleTablaActividades}>
                   {" "}
                      <span className="text-white">Actividades</span>
                 </div>
-                <div className="btn boton-panel" onClick={handleTablaAlumnos}>
+                <div className="p-2 boton-panel" style={{ cursor: "pointer" }} onClick={handleTablaAlumnos}>
                   <span className="text-white">Alumnos</span>
                 </div>
               </div>
             </div>
             <div
-              className="p-2 text-center"
+              className="p-2 text-center boton-panel"
               style={{ cursor: "pointer" }}
             >
               <a

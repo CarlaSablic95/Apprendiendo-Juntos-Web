@@ -163,9 +163,8 @@ a {
     width: 35%;
 }
 
-/* Form registro maestro */
+/* Form registro maestro y alumno */
 .card {
-
     border-radius: 30px !important;
 }
 
@@ -181,6 +180,30 @@ a {
 
 .img-alumno {
     cursor: pointer;
+}
+
+.icono-ojo {
+    top: 6px;
+    right: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.icono-ojo > img {
+    width: 25px;
+}
+
+.icono-ojo:hover {
+    cursor: pointer;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 /* Spinner (loader) */
@@ -221,6 +244,8 @@ aside {
 .img-actividad, .img {
     filter: drop-shadow(3px 3px 3px #949494);
 }
+
+
 
 /* JUEGOS */
 .columna-juegos {

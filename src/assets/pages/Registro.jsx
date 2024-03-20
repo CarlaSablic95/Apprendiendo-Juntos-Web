@@ -8,11 +8,16 @@ const Registro = () => {
                     <h1 className="text-white">Registrate y jugá</h1>
                 </div>
                 <div className="col-12 col-md-6 d-flex justify-content-center">
-                <div className="card my-5">
+                    <div className="container">
+                        <div className="row">
+                    <div className="card my-5 px-0">
                         <div className="title-card bg-primary py-3">
                             <p className="text-center text-white mb-0">Registro</p>
                         </div>
-                        <FormRegistroAlumno />
+                                <FormRegistroAlumno />
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

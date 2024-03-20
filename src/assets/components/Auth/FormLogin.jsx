@@ -68,7 +68,7 @@ const FormLogin = () => {
                 // console.log("USER DATA: ", userDocSnapshot.data());
 
     
-                    window.location.href="./";
+                    // window.location.href="./";
             } catch(error) {
                 let errorMessage = "";
                 if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
