@@ -1,18 +1,26 @@
-import { Link } from 'react-router-dom';
-import Avatar from './images/avatar.png';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebaseConfig";
+import MostrarContrasenia from "./images/ver.png";
+import OcultarContrasenia from "./images/ocultar.png";
 
 const FormLogin = () => {
-    const [ loading, setLoading ] = useState(false);
+    const navigate = useNavigate();
 
+    const [mostrarPass, setMostrarPass] = useState(false);
+
+    
+    const [ loading, setLoading ] = useState(false);
+    
     const [ errors, setErrors ] = useState({
         email: "",
         contrasenia: "",
         errorInicioSesion: ""
     });
+    
+    const handleMostrarPass = () => {
+        setMostrarPass(!mostrarPass);
+    }
 
     const handleLoginForm = async (e) => {
         e.preventDefault();
@@ -30,8 +38,8 @@ const FormLogin = () => {
 
         if(!contrasenia.trim()) {
             newErrors.contrasenia = "La contraseña es obligatoria";
-        } else if(contrasenia.length !== 8) {
-            newErrors.contrasenia = "La contraseña debe contener 8 caracteres";
+        } else if(contrasenia.length !== 6) {
+            newErrors.contrasenia = "La contraseña debe contener 6 caracteres";
         }
 
         setErrors({ 
@@ -45,30 +53,13 @@ const FormLogin = () => {
             try {
                 setLoading(true);
                 const auth = getAuth();
-                const userCredential = await signInWithEmailAndPassword(auth, email, contrasenia)
+                await signInWithEmailAndPassword(auth, email, contrasenia)
+                .then((userCredential) => {
+                    console.log("CREDENCIAL DE USUARIO: ", userCredential);
+                })
 
-                
-                const user = userCredential.user;
-                console.log("USER CREDENTIAL: ", user);
-
-                // Obtener datos del usuario desde Firestore
-                const userDocRef = doc(db, "usuarios", user.uid);
-
-                // console.log("USER DOC REF: ", userDocRef);
-
-                
-                const userDocSnapshot = await getDoc(userDocRef);
-
-                // console.log("USER DOC SNAPSHOT: ", userDocSnapshot);
-
-
-                const userData = userDocSnapshot.data()
-                    console.log("DATOS DE USUARIO: ", userData);
-
-                // console.log("USER DATA: ", userDocSnapshot.data());
-
-    
-                    // window.location.href="./";
+                // REDIRECCIÓN
+                navigate("/");
             } catch(error) {
                 let errorMessage = "";
                 if(error.code === "auth/user-not-found" || error.code === "auth/wrong-password") {
@@ -89,10 +80,6 @@ const FormLogin = () => {
 
     return (
         <form className="py-5 px-5" onSubmit={ handleLoginForm }>
-            <div className="mb-3 text-center">
-                <img src={Avatar} alt="Ícono de avatar" />
-            </div>
-
             <div className="mb-3">
                 <div className="form-floating mb-3">
                     <input type="email" className={`form-control ${  errors.email && 'is-invalid' }`} id="floatingInputEmail" placeholder="juan_gomez@gmail.com" 
@@ -105,10 +92,11 @@ const FormLogin = () => {
 
             <div className="mb-3">
                 <div className="form-floating">
-                    <input type="password" className={`form-control ${ errors.contrasenia && 'is-invalid'}`} id="floatingPassword" placeholder="Contraseña"
+                    <input type={ mostrarPass ? "text" : "password" } className={`form-control ${ errors.contrasenia && 'is-invalid'}`} id="floatingPassword" placeholder="Contraseña"
                     name="contrasenia"/>
                     <small className="text-danger">{ errors.contrasenia }</small>
-                    <label htmlFor="floatingPassword">Contraseña <span className="text-danger">*</span></label>
+                    {  mostrarPass ? <span className="position-absolute icono-ojo"><img src={ MostrarContrasenia } onClick={ handleMostrarPass }  alt="ícono de ojo" /></span> : <span className="position-absolute icono-ojo"><img src={ OcultarContrasenia } onClick={ handleMostrarPass }  alt="ícono de ojo tachado" /></span> }
+                    <label htmlFor="password">Contraseña<span className="text-danger">*</span> </label>
                 </div>
             </div>
 
@@ -119,7 +107,7 @@ const FormLogin = () => {
 
             <div className='d-flex flex-column justify-content-center align-items-center'>
                 <button type="submit" className="btn btn-primary mb-3" disabled={ loading }>{ loading ? <><span className='loader'></span> <span>Iniciando sesión</span></> : "Iniciar sesión" }</button>
-                <Link to="/registro" className="mb-3">No tengo cuenta</Link>
+                <span>¿No tenés cuenta? <Link to="/registro" className="mb-3">Registrate</Link></span>
             </div>
         </form>
     )

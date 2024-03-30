@@ -46,4 +46,4 @@ const getImagenesMaestros = async () => {
     }
     
 // export { db, storage, getImagenesMaestros, crearCuenta };
-export { app, db, getImagenesMaestros };
+export { app, db, storage, getImagenesMaestros };

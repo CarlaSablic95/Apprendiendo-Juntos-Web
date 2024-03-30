@@ -9,8 +9,8 @@ const Registro = () => {
                 </div>
                 <div className="col-12 col-md-6 d-flex justify-content-center">
                     <div className="container">
-                        <div className="row">
-                    <div className="card my-5 px-0">
+                        <div className="row justify-content-center">
+                    <div className="card card-form my-5 px-0">
                         <div className="title-card bg-primary py-3">
                             <p className="text-center text-white mb-0">Registro</p>
                         </div>

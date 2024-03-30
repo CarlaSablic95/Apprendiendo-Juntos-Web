@@ -58,6 +58,14 @@ a {
     transition: .8s ease-out;
 }
 
+.item-dropdown:hover {
+    background-color: transparent;
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    border-color: transparent !important;
+}
+
 .btn-primary {
     border: 1px solid var(--primary-color);
     background-color: var(--primary-color);
@@ -67,7 +75,7 @@ a {
     color: var(--primary-color) !important;
     border: 1px solid var(--primary-color) !important;
     background-color: var(--white-color) !important;
-    transition: .8s ease-out;
+    /* transition: .8s ease-out; */
 }
 
 .bg-primary {
@@ -90,12 +98,6 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 84%;
-}
-
-.card-2::before {
-    content: "- - - - - -";
-    font-weight: bolder;
-    color: var(--primary-color)
 }
 
 /* BOTONES */
@@ -168,6 +170,11 @@ a {
     border-radius: 30px !important;
 }
 
+.card-form {
+    border-radius: 30px !important;
+    width: 70%;
+}
+
 .title-card {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -181,6 +188,16 @@ a {
 .img-alumno {
     cursor: pointer;
 }
+
+.archivo-imagen {
+        background-color: var(--quaternary-color);
+        display: inline-block;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 16px;
+        text-align: center;
+}
+
 
 .icono-ojo {
     top: 6px;
@@ -216,6 +233,24 @@ a {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+}
+
+
+/* SWEET ALERT */
+div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
+    background: rgba(46, 46, 46, 0.4);
+    filter: drop-shadow(2px 4px 6px gray);
+}
+
+div:where(.swal2-container).swal2-center>.swal2-popup {
+    border-radius: 3rem;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    border-radius: 2rem !important;
+    background-color: #FF9642 !important;
+    color: #fff;
+    padding: 10px 30px;
 }
 
 @keyframes rotation {
@@ -265,13 +300,13 @@ aside {
 
 /* MEDIA QUERIES */
 @media (width <= 992px) {
-    .card {
+    .card-form {
         max-width: 60%;
     }
 }
 
 @media (width <= 768px) {
-    .card {
+    .card-form {
         max-width: 85%;
     }
 }

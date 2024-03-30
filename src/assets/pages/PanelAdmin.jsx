@@ -5,7 +5,7 @@ import EliminarActividad from "../components/FormActividades/EliminarActividad";
 import TablaActividades from "../components/TablaActividades/TablaActividades";
 import TablaAlumnos from "../components/TablaAlumnos/TablaAlumnos";
 import CerrarSesion from "../components/Auth/CerrarSesion";
-// import { FlaticonIcon } from "@flaticon/flaticon-uicons";
+
 
 // FIREBASE
 
@@ -55,11 +55,11 @@ const PanelAdmin = () => {
   return (
     <section className="container-fluid">
       <div className="row justify-content-between">
-        <div className="col-3 px-0">
+        <div className="col-3 px-0 d-none d-md-block">
           <aside className="bg-primary d-flex flex-column justify-content-between px-3">
             <div className="contenedor-info">
               <div className="text-center p-2">
-                <h4 className="text-white mb-0">Panel admin</h4>
+                <h4 className="text-white my-4">Apprendiendo Juntos</h4>
               </div>
               {usuario && ( // Mostrar información del usuario solo si está autenticado
                 <div className="text-center text-white mb-5 py-3">
@@ -77,10 +77,10 @@ const PanelAdmin = () => {
               <div className="text-center text-white d-flex flex-column">
                 <div className="p-2 boton-panel" style={{ cursor: "pointer" }} onClick={handleTablaActividades}>
                   {" "}
-                     <span className="text-white">Actividades</span>
+                     <span className="text-white"><i className="bi bi-book"></i> Actividades</span>
                 </div>
                 <div className="p-2 boton-panel" style={{ cursor: "pointer" }} onClick={handleTablaAlumnos}>
-                  <span className="text-white">Alumnos</span>
+                  <span className="text-white"><i className ="bi bi-people"></i> Alumnos</span>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ const PanelAdmin = () => {
                 data-bs-toggle="modal"
                 data-bs-target="#cerrarSesion"
               >
-                <i className="bi bi-x-circle"></i> Cerrar sesión
+                <i className="bi bi-box-arrow-right"></i> Cerrar sesión
               </a>
             </div>
           </aside>

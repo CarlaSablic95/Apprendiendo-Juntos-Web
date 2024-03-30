@@ -1,46 +1,49 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import Nene from './images/nene.png';
 import Nena from './images/nena.png';
 import Batman from './images/batman.png';
 import TinkerBell from './images/tinker-bell.png';
+import CaritaFeliz from './images/feliz.png';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig/firebaseConfig";
 import MostrarContrasenia from "./images/ver.png";
 import OcultarContrasenia from "./images/ocultar.png";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const FormRegistroAlumno = () => {
+    const navigate = useNavigate();
+
     const [selectedImage, setSelectedImage] = useState(null);
     const [form, setForm] = useState({
         avatar: null,
         nombre: "",
+        email: "",
         password: ""
     });
 
     const [errors, setErrors] = useState({
         errorNombre: "",
+        errorEmail: "",
         errorPassword: ""
     });
 
-    const [ mostrarPass, setMostrarPass ] = useState(false);
+    const [mostrarPass, setMostrarPass] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const [ loading, setLoading] = useState(false)
- 
     const handleMostrarPass = () => {
         setMostrarPass(!mostrarPass);
     }
-
-    // console.log("DB: ", db);
-    // console.log("AUTH: ", getAuth);
-    // console.log("CREAR USUARIO: ", createUserWithEmailAndPassword);
 
     const handleImageClick = (imagen) => {
         setSelectedImage(imagen);
         console.log("imagen ", imagen);
     };
 
-    // Controlar datos de formulario
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setForm(prevState => ({
@@ -48,79 +51,119 @@ const FormRegistroAlumno = () => {
             [id]: value
         }));
 
-        // Limpio los mensajes de error
-
-        if(id === "nombre") {
+        if (id === "nombre") {
             setErrors(prevState => ({
                 ...prevState,
                 errorNombre: ""
             }))
-        } else if(id === "password") {
+        } 
+        
+        if (id === "email") {
+            setErrors(prevState => ({
+                ...prevState,
+                errorEmail: ""
+            }))
+        } else if (id === "password") {
             setErrors(prevState => ({
                 ...prevState,
                 errorPassword: ""
             }))
         }
-
     }
 
-    // Detengo el form
     const handleForm = (e) => {
         e.preventDefault();
 
-       console.log("Formulario no enviado");
+        console.log("Formulario no enviado");
 
-       const { nombre,  password } = form;
-// Validación de campos
-       if(!nombre.trim()) {
-        setErrors(prevState => ({
-            ...prevState,
-            errorNombre: "El nombre es requerido"
-        }));
+        const { nombre, email, password } = form;
 
-       }
+        if (!nombre.trim()) {
+            setErrors(prevState => ({
+                ...prevState,
+                errorNombre: "El nombre es requerido"
+            }));
+        }
 
-       if(!password.trim()) {
-        setErrors(prevState => ({
-            ...prevState,
-            errorPassword: "La contraseña es requerida"
-        }))
-       } else if(password.length < 6) {
-        setErrors(prevState => ({
-            ...prevState,
-            errorPassword: "La contraseña debe tener al menos 6 caracteres"
-        }));
-       }
+        if (!email.trim()) {
+            setErrors(prevState => ({
+                ...prevState,
+                errorEmail: "El email es obligatorio"
+            }));
+        } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
+            setErrors(prevState => ({
+                ...prevState,
+                errorEmail: "El email no tiene un formato válido"
+            }));
+        }
 
-    // Guardo la filtración de errores existentes en una variable
+        if (!password.trim()) {
+            setErrors(prevState => ({
+                ...prevState,
+                errorPassword: "La contraseña es requerida"
+            }))
+        } else if (password.length < 6) {
+            setErrors(prevState => ({
+                ...prevState,
+                errorPassword: "La contraseña debe tener al menos 6 caracteres"
+            }));
+        }
 
-    const hasErrors = Object.values(errors).some((error) => error !== "");
+        const hasErrors = Object.values(errors).some((error) => error !== "");
 
-    // CREANDO USUARIO:
-    if(!hasErrors) {
-        setLoading(true);
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, password)
-            .then((userCredential) => {
-                console.log("CREDENCIAL DE USUARIO: ", userCredential)
-    
-                setForm({
-                    avatar: selectedImage,
-                    nombre: nombre,
-                    password: password
-                });
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                console.log("MENSAJE DE ERROR", errorMessage);
-                console.log("ERROR", error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-
-    }
+        if (!hasErrors) {
+            setLoading(true);
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(async (userCredential) => {
+                    const user = userCredential.user;
+                    console.log("CREDENCIAL DE USUARIO: ", user);
         
+                    try {
+                        const docRef = await addDoc(collection(db, "usuarios"), {
+                            uid: user.uid,
+                            nombre: nombre,
+                            avatar: selectedImage
+                        });
+                        console.log("Documento guardado con ID: ", docRef.id);
+                        
+                        setForm(prevState => ({
+                            ...prevState,
+                            avatar: selectedImage,
+                            nombre: nombre,
+                            email: email,
+                            password: password
+                        }));
+
+                        navigate("/");
+
+
+                        const MySwal = withReactContent(Swal)
+
+                        MySwal.fire({
+                            html: <img src={ CaritaFeliz } alt="Ícono de carita feliz" style={{width: "60px" }} />,
+                            title: <>
+                                    <p>¡Bienvenido/a { nombre }!</p>
+                                    <p style={{
+                                        fontSize: "25px",
+                                        fontWeight: 500
+                                    }}>¿Estás preparado/a para aprender y divertirte?</p>
+                                    </>,
+                        })
+                        .catch(error => {
+                            console.log("Error al añadir documento: ", error);
+                        });
+                    } catch (error) {
+                        console.log("Error al añadir documento: ", error);
+                    }
+                }).catch((error) => {
+                    const errorMessage = error.message;
+                    console.log("MENSAJE DE ERROR", errorMessage);
+                    console.log("ERROR", error);
+                }).finally(() => {
+                    setLoading(false);
+                });
+        }
     }
 
     return (
@@ -162,6 +205,15 @@ const FormRegistroAlumno = () => {
                     onChange={ handleInputChange } />
                     <small className="text-danger mb-3">{ errors.errorNombre }</small>
                     <label htmlFor="nombre">Nombre<span className="text-danger">*</span> </label>
+                </div>
+            </div>
+
+            <div className="mb-4">
+                <div className="form-floating mb-3">
+                    <input type="email" className={`form-control ${ errors.errorEmail ? "is-invalid" : ""}`} id="email" placeholder="juan@gmail.com"
+                    onChange={ handleInputChange } />
+                    <small className="text-danger mb-3">{ errors.errorEmail }</small>
+                    <label htmlFor="nombre">Email<span className="text-danger">*</span> </label>
                 </div>
             </div>
 

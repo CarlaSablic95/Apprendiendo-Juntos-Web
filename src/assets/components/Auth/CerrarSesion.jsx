@@ -1,14 +1,15 @@
 import { app } from "../firebaseConfig/firebaseConfig";
 import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
 const CerrarSesion = () => {
-
+    const navigate = useNavigate();
     const CerrarSesionUsuario = () => {
         signOut(auth)
         .then(() => {
-            window.location.href = "./iniciar-sesion";
+            navigate("/iniciar-sesion");
         })
         .catch((error) => {
             console.log("ERROR: ", error);
