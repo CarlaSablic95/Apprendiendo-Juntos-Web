@@ -5,9 +5,9 @@ const Registro = () => {
         <section className="container-fluid">
             <div className="fondo-form row justify-content-evenly align-items-center">
                 <div className="col-12 col-md-4">
-                    <h1 className="text-white">Registrate y jugá</h1>
+                    <h1 className="text-white">Registrate y aprendé jugando</h1>
                 </div>
-                <div className="col-12 col-md-6 d-flex justify-content-center">
+                <div className="col-12 col-md-4 d-flex justify-content-center">
                     <div className="container">
                         <div className="row justify-content-center">
                     <div className="card card-form my-5 px-0">
@@ -18,6 +18,7 @@ const Registro = () => {
 
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

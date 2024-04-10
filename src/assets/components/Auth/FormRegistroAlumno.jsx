@@ -42,6 +42,10 @@ const FormRegistroAlumno = () => {
     const handleImageClick = (imagen) => {
         setSelectedImage(imagen);
         console.log("imagen ", imagen);
+        setForm(prevState => ({
+            ...prevState,
+            avatar: imagen
+        }));
     };
 
     const handleInputChange = (e) => {
@@ -135,6 +139,10 @@ const FormRegistroAlumno = () => {
                             password: password
                         }));
 
+                        // Guardo el nombre en localStorage
+                        localStorage.setItem("nombreUsuario", nombre);
+                        localStorage.setItem("avatarUsuario", selectedImage);
+
                         navigate("/");
 
 
@@ -169,31 +177,31 @@ const FormRegistroAlumno = () => {
     return (
             <form className="py-4 px-5" onSubmit={ handleForm }>
                 <p>Elegir avatar<span className="text-danger">*</span></p>
-                <div className="mb-4 d-flex justify-content-evenly align-items-center">
+                <div className="mb-4 d-flex justify-content-center align-items-center">
                 <Splide className="container-fluid" options={{ 
+                    type: "loop",
                     perPage: 3,
                     focus: "center",
-                    isLoop: true,
                     gap: "1px",
                     pagination: false
                     }} aria-label="My Favorite Images">
                     <SplideSlide className='container d-flex justify-content-center'>
-                        <img src={ Nene } alt="Ícono de nene" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === "nene" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nene") } />
+                        <img src={ Nene } alt="Ícono de nene" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === Nene ? "border border-success" : ""}`} onClick={ () => handleImageClick(Nene) } />
+
+                    </SplideSlide>
+
+                    <SplideSlide className='container d-flex justify-content-center'>
+                        <img src={ Batman } alt="Ícono de Batman" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === Batman ? "border border-success" : ""}`} onClick={ () => handleImageClick(Batman) } />
                     
                     </SplideSlide>
 
                     <SplideSlide className='container d-flex justify-content-center'>
-                        <img src={ Batman } alt="Ícono de Batman" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === "batman" ? "border border-success" : ""}`} onClick={ () => handleImageClick("batman") } />
+                        <img src={ Nena } alt="Ícono de nena" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === Nena ? "border border-success" : ""}`} onClick={ () => handleImageClick(Nena) } />
                     
                     </SplideSlide>
 
                     <SplideSlide className='container d-flex justify-content-center'>
-                        <img src={ Nena } alt="Ícono de nena" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === "nena" ? "border border-success" : ""}`} onClick={ () => handleImageClick("nena") } />
-                    
-                    </SplideSlide>
-
-                    <SplideSlide className='container d-flex justify-content-center'>
-                        <img src={ TinkerBell } alt="Ícono de Tinker Bell" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === "tinkerbell" ? "border border-success" : ""}`} onClick={ () => handleImageClick("tinkerbell") } />
+                        <img src={ TinkerBell } alt="Ícono de Tinker Bell" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === TinkerBell ? "border border-success" : ""}`} onClick={ () => handleImageClick(TinkerBell) } />
                     
                     </SplideSlide>
                     

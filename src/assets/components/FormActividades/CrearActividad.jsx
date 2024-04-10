@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { db, storage } from "../firebaseConfig/firebaseConfig";
+import { db, storage } from "../firebaseConfig/firebaseConfig"; // Obtengo la BD y el almacenamiento
 import { addDoc, collection } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 
 const FormActividades = () => {
+    // ESTADO DEL FORMULARIO
     const [form, setForm] = useState({
         nombre: "",
         descripcion: "",
@@ -11,7 +12,7 @@ const FormActividades = () => {
         portadaJuego: null
     });
 
-    // ERRORES EN EL FORMULARIO
+    // ESTADO DE ERRORES EN EL FORMULARIO
     const [errors, setErrors] = useState({
         errorNombre: "",
         errorDescripcion: "",
@@ -22,15 +23,15 @@ const FormActividades = () => {
     // LOADER
     const [loading, setLoading] = useState(false);
 
-    const [fileName, setFileName] = useState("");
+    // ESTADO DEL NOMBRE DEL ARCHIVO
+    const [fileName, setFileName] = useState(null);
 
-    // VALIDACIÓN DE INPUTS
+    // VALIDACIÓN DE LOS CAMPOS
     const handleInputChange = (e) => {
         const { id, value } = e.target;
         setForm(prevState => ({
             ...prevState,
-            [id]: value,
-            
+            [id]: value, // [id] : sirve para acceder y actualizar dinámicamente las propiedades de un objeto en función de una clave dinámica, que en este caso es el valor de id del campo de entrada del formulario
         }));
 
         // Actualizar errores
@@ -55,31 +56,33 @@ const FormActividades = () => {
             }));
         }
     }
-
+    
     // VALIDACIÓN DEL TIPO DE IMAGEN Y SUBIDA DE ARCHIVO
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]; // objeto file
-        // Verifico si se seleccionó un archivo
-        if(file) {
-            // Verifico el tipo de archivo
-            if(file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg") {
-                setFileName(file.name);
-                
-                setForm(prevState => ({ // cuando elijo una imagen, se actualiza el formulario agregando el nombre del archivo
-                    ...prevState,
-                    portadaJuego: file // Guarda el objeto File completo en el estado
-                }));
-                
-                setErrors(prevState => ({
-                    ...prevState,
-                    errorPortadaJuego: ""
-                }));
+const handleImageChange = (e) => {
+    const file = e.target.files[0]; // objeto file
+    // Verifico si se seleccionó un archivo
+    if(file) {
+        // Verifico el tipo de archivo
+        if(file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg") {
+            
+            setFileName(file.name);
+            
+            // cuando elijo una imagen, se actualiza el formulario agregando el nombre del archivo
+            setForm(prevState => ({
+                ...prevState,
+                portadaJuego: file // Guarda el objeto File completo en el estado
+            }));
+            
+            setErrors(prevState => ({
+                ...prevState,
+                errorPortadaJuego: ""
+            }));
 
-            } else {
-                alert("Sólo se aceptan imagen de tipo PNG o JPG");
-            }
+        } else {
+            alert("Sólo se aceptan imagen de tipo PNG o JPG");
         }
-    };
+    }
+};
 
 
 // ENVÍO DE FORMULARIO SI NO HAY ERRORES
@@ -108,12 +111,13 @@ const handleFormSubmit = async (e) => {
     // Intentar agregar los datos a Firestore
     try {
         setLoading(true);
-        const storageRef = ref(storage, `portadas/${portadaJuego.name}`)
+        const storageRef = ref(storage, `portadas/${portadaJuego}`)
 
         await uploadBytes(storageRef, portadaJuego); // Subir la imagen al almacenamiento de Firebase
 
         const url = await getDownloadURL(storageRef); // Obtener la URL de descarga de la imagen
 
+        // SUBO A FIRESTORE TODOS LOS DATOS
         const docRef = await addDoc(collection(db, "actividades"), {
             nombre,
             descripcion,
@@ -125,12 +129,16 @@ const handleFormSubmit = async (e) => {
         alert("Actividad agregada con éxito");
 
         // Limpiar el formulario después de agregar la actividad
-        setForm({
-            nombre: "",
-            descripcion: "",
-            materia: "",
-            portadaJuego: null
-        });
+        // Limpiar el formulario después de agregar la actividad
+    setForm({
+        nombre: "",
+        descripcion: "",
+        materia: "",
+        portadaJuego: null
+    });
+
+    // Limpiar el nombre del archivo
+    setFileName(null);
 
         console.log("ESTADO DEL FORMULARIO: ", form);
     } catch (error) {
@@ -175,8 +183,7 @@ const handleFormSubmit = async (e) => {
                                 <label htmlFor="materia">Materia<span className="text-danger">*</span></label>
                             </div>
                         </div>
-
-            {/* VALIDAR QUE SÓLO ACEPTE ARCHIVOS DE TIPO IMAGEN: png/jpg/jpeg */}
+                        {/* INPUT FILE  */}
                         <div className="mb-4">
                             <label htmlFor="portadaJuego" className="form-label w-100">Portada del juego<span className="text-danger">*</span>
                             <span className="archivo-imagen dm-sans py-2 mt-2 mb-1 w-100">

@@ -8,7 +8,6 @@ const FormLogin = () => {
     const navigate = useNavigate();
 
     const [mostrarPass, setMostrarPass] = useState(false);
-
     
     const [ loading, setLoading ] = useState(false);
     
@@ -53,10 +52,15 @@ const FormLogin = () => {
             try {
                 setLoading(true);
                 const auth = getAuth();
-                await signInWithEmailAndPassword(auth, email, contrasenia)
-                .then((userCredential) => {
-                    console.log("CREDENCIAL DE USUARIO: ", userCredential);
-                })
+                const userCredential = await signInWithEmailAndPassword(auth, email, contrasenia)
+                // .then((userCredential) => {
+                //     console.log("CREDENCIAL DE USUARIO: ", userCredential);
+                // })
+                // Obtengo el usuario
+                const user = userCredential.user;
+
+                localStorage.setItem("nombreUsuario", user.displayName);
+                localStorage.setItem("avatarUsuario", user.photoURL);
 
                 // REDIRECCIÓN
                 navigate("/");

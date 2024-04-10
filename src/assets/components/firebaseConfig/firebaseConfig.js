@@ -43,7 +43,7 @@ const getImagenesMaestros = async () => {
         } catch (error) {
             console.log("Error al obtener las imágenes" , error);
         }
-    }
+}
     
 // export { db, storage, getImagenesMaestros, crearCuenta };
 export { app, db, storage, getImagenesMaestros };

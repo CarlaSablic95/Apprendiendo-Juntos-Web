@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import  UsuarioAvatar  from "../Auth/images/avatar.png";
+// import  UsuarioAvatar  from "../Auth/images/avatar.png";
 import { db } from "../firebaseConfig/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 
 // Importando los módulos de Firebase
-import { app, getImagenesMaestros } from "../firebaseConfig/firebaseConfig";
+import { app} from "../firebaseConfig/firebaseConfig";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
@@ -14,14 +14,17 @@ const usuarios = collection(db, "usuarios");
 
 
 const FormRegistroMaestro = () => {
-    // Variable de estado para mostrar las imagenes en el formulario, desde la base de datos
-  const [ imagenes, setImagenes ] = useState([]);
 
-const [ selectedAvatar, setSelectedAvatar ] = useState(null);
+// const [ selectedAvatar, setSelectedAvatar ] = useState(null);
    // Estado para controlar la imagen de perfil
   const [ loading, setLoading ] = useState(false);
 
-  const [ usuario, setUsuario ] = useState(null);
+  const [ form, setForm ] = useState({
+    nombre: "",
+    apellido: "",
+    email: "",
+    contrasenia: ""
+  });
 
   const [errors, setErrors] = useState({ // errores para el formulario
     nombre: "",
@@ -32,9 +35,9 @@ const [ selectedAvatar, setSelectedAvatar ] = useState(null);
 
 // SELECCION DE AVATAR
 
-const handleAvatarClick = (imageUrl) => { // 
-    setSelectedAvatar(imageUrl);
-}
+// const handleAvatarClick = (imageUrl) => { // 
+//     setSelectedAvatar(imageUrl);
+// }
 
 // FORMULARIO
 const handleForm = async(e) => {
@@ -43,7 +46,7 @@ const handleForm = async(e) => {
     const apellido = e.target.apellido.value;
     const email = e.target.email.value;
     const contrasenia = e.target.contrasenia.value;
-    const avatar = selectedAvatar || UsuarioAvatar;
+    // const avatar = selectedAvatar || UsuarioAvatar;
   
 
     const newErrors = {};
@@ -77,33 +80,32 @@ const handleForm = async(e) => {
     if(!hasErrors) {
         try {
             setLoading(true);
-                localStorage.setItem("userID", email);
-                localStorage.setItem("nombre", nombre);
-                localStorage.setItem("apellido", apellido);
-                localStorage.setItem("avatar", avatar);
+                sessionStorage.setItem("userID", email);
+                sessionStorage.setItem("nombre", nombre);
+                sessionStorage.setItem("apellido", apellido);
+                // localStorage.setItem("avatar", avatar);
 
             const usuarioCreado = await createUserWithEmailAndPassword(auth, email, contrasenia);
 
-            const { usuario } = usuarioCreado;
+            // const { usuario } = usuarioCreado;
 
-            console.log("USUARIO: ", usuario)
+            console.log("USUARIO: ", usuarioCreado)
              // Creo el documento del usuario en la colección
          
              const usuarioDocRef = await addDoc(usuarios, {
                  nombre,
                  apellido,
-                 avatar
+                //  avatar
              });
              
-             setUsuario({
+             setForm({
                 nombre,
                 apellido,
-                avatar
+                // avatar
              });
 
              console.log("Usuario creado con ID: ", usuarioDocRef.id);
-            //  window.location.replace("./");
-             // Redirigir a otra página o mostrar un mensaje de éxito
+
          } catch (error) {
             setErrors({
              ...errors,
@@ -116,29 +118,24 @@ const handleForm = async(e) => {
 
 }
 
-// Obtener imagenes de la base de datos
-    useEffect(() => {
-        const getImagesData = async () => {
-            const images = await getImagenesMaestros();
-            setImagenes(images); // array que tiene las url de las imagenes
-        };
-
-      getImagesData(); // Promise
-    }, []);
-
-
     return (
-            <form className="py-4 px-4 px-md-5" onSubmit={ handleForm }>
+        <section className="container-fluid">
+            <div className="fondo-form row justify-content-evenly align-items-center">
+                <div className="col-12 col-md-4">
+                    <h1 className="text-white">Iniciá sesión</h1>
+                </div>
+                <div className="col-12 col-md-4 d-flex flex-column justify-content-center">
+                    <div className="card my-5">
+                        <div className="title-card bg-primary py-3">
+                            <p className="text-center text-white mb-0">Registro</p>
+                        </div>
+                        <form className="py-4 px-4 px-md-5" onSubmit={ handleForm }>
                 <p className="mb-2">Elegir avatar:</p>
                  {/* A cada div que contiene el avatar, le agrego una clase CSS condicionalmente dependiendo si elegí el avatar. Uso "plantillas literales" y "operador ternario" */}
                  <div className="mb-4 d-flex justify-content-evenly align-items-center">
-                     { imagenes.map((imageUrl) => (
-                        <div key={ imageUrl } className={`rounded-circle shadow-sm border-2 ${ selectedAvatar === imageUrl ? "border border-success" : ""}`} onClick={ () => handleAvatarClick(imageUrl) } >
-                            <img key={ imageUrl } src={ imageUrl } alt="Imagen del maestro" className="rounded-circle img-maestro border"  />
+                        <div className="rounded-circle shadow-sm border-2" >
+                            <img src="" alt="Imagen del maestro" className="rounded-circle img-maestro border"  />
                         </div>
-                    ))
-
-                    }
                 </div>
             <div className="mb-3">
                 <div className="form-floating mb-3">
@@ -179,11 +176,20 @@ const handleForm = async(e) => {
                     <label htmlFor="contrasenia">Contraseña <span className="text-danger">*</span></label>
                 </div>
             </div>
+            
             <div className='d-flex flex-column justify-content-center align-items-center'>
                 <button type="submit" className="btn btn-primary mb-3" disabled={ loading }>{ loading ? <><span className="loader"></span> <span>Creando cuenta</span></> : "Crear cuenta" }</button>
                 <Link to="/iniciar-sesion" className="mb-3">Ya tengo una cuenta</Link>
             </div>
             </form>
+                    </div>
+                    
+                </div>
+                    <Link className='bg-primary rounded-4 text-center py-2 mb-0 text-white' to="/registro-admin">Acceso para administrador</Link>
+                    
+            </div>
+        </section>
+            
     )
 }
 

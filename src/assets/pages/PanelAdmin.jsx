@@ -15,6 +15,7 @@ const PanelAdmin = () => {
   const [mostrarTablaActividades, setMostrarTablaActividades] = useState(true);
   const [usuario, setUsuario] = useState(null); // Estado para almacenar datos del usuario
 
+
   const handleTablaActividades = () => {
     setMostrarTablaActividades(true);
   };
@@ -99,7 +100,7 @@ const PanelAdmin = () => {
           </aside>
         </div>
 
-        {mostrarTablaActividades ? <TablaActividades /> : <TablaAlumnos />}
+        { mostrarTablaActividades ? <TablaActividades /> : <TablaAlumnos />}
       </div>
 
       {/* Formularios modales */}
