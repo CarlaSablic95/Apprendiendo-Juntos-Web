@@ -37,8 +37,8 @@ const FormLogin = () => {
 
         if(!contrasenia.trim()) {
             newErrors.contrasenia = "La contraseña es obligatoria";
-        } else if(contrasenia.length !== 6) {
-            newErrors.contrasenia = "La contraseña debe contener 6 caracteres";
+        } else if(contrasenia.length !== 8) {
+            newErrors.contrasenia = "La contraseña debe contener 8 caracteres";
         }
 
         setErrors({ 

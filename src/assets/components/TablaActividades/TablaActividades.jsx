@@ -23,7 +23,7 @@ useEffect(() => {
             });
 
             // Actualizar el estado con las actividades obtenidas
-            setTablaActividades(actividades)
+            setTablaActividades(actividades);
         } catch (error) {
             console.error("Error al obtener las actividades: ", error);
         } finally {
@@ -68,7 +68,7 @@ useEffect(() => {
                         <tbody className="align-middle">
                             { tablaActividades.map((actividad) => (
                                 <tr key={actividad.id}>
-                                    <td><img src={actividad.portadaJuego} alt="Portada de la actividad" className="img-actividad rounded-circle" width={"70px"} /></td>
+                                    <td><img src={actividad.portadaJuego} alt="Portada de la actividad" className="img-actividad rounded-5" width={"70px"} /></td>
                                     <td>{actividad.nombre}</td>
                                     <td>{actividad.descripcion}</td>
                                     <td>{actividad.materia}</td>

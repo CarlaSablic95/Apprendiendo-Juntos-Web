@@ -13,6 +13,10 @@
     --dark-color: #3c3c3c;
 }
 
+.bg-white {
+    background-color: var(--white-color) !important;
+}
+
 /* SCROLLBAR */
 *::-webkit-scrollbar {
     width: 13px;
@@ -77,6 +81,11 @@ a {
     background-color: var(--white-color) !important;
     /* transition: .8s ease-out; */
 }
+
+.btn-primary:hover > .bi-patch-plus {
+    color: var(--primary-color) !important;
+}
+
 
 .bg-primary {
     color: var(--white-color) !important;

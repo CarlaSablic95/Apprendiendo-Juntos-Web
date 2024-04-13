@@ -12,7 +12,7 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      id="namedview27"
-     pagecolor="#ffffff"
+     pagecolor="#fefefe"
      bordercolor="#666666"
      borderopacity="1.0"
      inkscape:pageshadow="2"
@@ -23,7 +23,7 @@
      y="0"
      width="1920"
      height="1020"
-     fill="#ffffff"
+     fill="#fefefe"
      id="rect2" />
   <defs
      id="defs9">
@@ -35,12 +35,12 @@
        y2="0%">
       <stop
          offset="14.444444444444446%"
-         stop-color="#ffffff"
+         stop-color="#fefefe"
          stop-opacity="1"
          id="stop4" />
       <stop
          offset="85.55555555555554%"
-         stop-color="#ffffff"
+         stop-color="#fefefe"
          stop-opacity="1"
          id="stop6" />
     </linearGradient>
@@ -55,12 +55,12 @@
        y2="0%">
       <stop
          offset="14.444444444444446%"
-         stop-color="#ffffff"
+         stop-color="#fefefe"
          stop-opacity="1"
          id="stop11" />
       <stop
          offset="85.55555555555554%"
-         stop-color="#ffffff"
+         stop-color="#fefefe"
          stop-opacity="1"
          id="stop13" />
     </linearGradient>

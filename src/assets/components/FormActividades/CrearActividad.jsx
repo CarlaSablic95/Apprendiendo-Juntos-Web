@@ -62,21 +62,23 @@ const handleImageChange = (e) => {
     const file = e.target.files[0]; // objeto file
     // Verifico si se seleccionó un archivo
     if(file) {
+        console.log("IMAGEN ELEGIDA: ", file.name);
         // Verifico el tipo de archivo
         if(file.type === "image/png" || file.type === "image/jpg" || file.type === "image/jpeg") {
             
             setFileName(file.name);
-            
             // cuando elijo una imagen, se actualiza el formulario agregando el nombre del archivo
             setForm(prevState => ({
                 ...prevState,
-                portadaJuego: file // Guarda el objeto File completo en el estado
+                portadaJuego: file// Guarda el objeto File completo en el estado
             }));
             
+
             setErrors(prevState => ({
                 ...prevState,
                 errorPortadaJuego: ""
             }));
+
 
         } else {
             alert("Sólo se aceptan imagen de tipo PNG o JPG");
@@ -111,12 +113,15 @@ const handleFormSubmit = async (e) => {
     // Intentar agregar los datos a Firestore
     try {
         setLoading(true);
-        const storageRef = ref(storage, `portadas/${portadaJuego}`)
+       
+        const storageRef = ref(storage, `portadas/${portadaJuego.name}`); // https://firebasestorage.googleapis.com/v0/b/apprendiendo-juntos-web.appspot.com/o/portadas%2Fleon.jpeg --> portadaJuego.name = leon.jpeg. Antes había escrito fileName.name = undefined
+        console.log("storageRef: ", storageRef);
 
-        await uploadBytes(storageRef, portadaJuego); // Subir la imagen al almacenamiento de Firebase
+        await uploadBytes(storageRef, portadaJuego);
 
         const url = await getDownloadURL(storageRef); // Obtener la URL de descarga de la imagen
 
+        console.log("URL: ", url);
         // SUBO A FIRESTORE TODOS LOS DATOS
         const docRef = await addDoc(collection(db, "actividades"), {
             nombre,
@@ -129,18 +134,18 @@ const handleFormSubmit = async (e) => {
         alert("Actividad agregada con éxito");
 
         // Limpiar el formulario después de agregar la actividad
-        // Limpiar el formulario después de agregar la actividad
-    setForm({
-        nombre: "",
-        descripcion: "",
-        materia: "",
-        portadaJuego: null
-    });
+        console.log("ESTADO DEL FORMULARIO: ", form);
+
+        setForm({
+            nombre: "",
+            descripcion: "",
+            materia: "",
+            portadaJuego: null
+        });
 
     // Limpiar el nombre del archivo
-    setFileName(null);
+    // setFileName(null);
 
-        console.log("ESTADO DEL FORMULARIO: ", form);
     } catch (error) {
         console.error("Error al agregar la actividad: ", error);
         alert("Ocurrió un error al agregar la actividad");
@@ -184,15 +189,27 @@ const handleFormSubmit = async (e) => {
                             </div>
                         </div>
                         {/* INPUT FILE  */}
-                        <div className="mb-4">
+                        {/* <div className="mb-4">
                             <label htmlFor="portadaJuego" className="form-label w-100">Portada del juego<span className="text-danger">*</span>
                             <span className="archivo-imagen dm-sans py-2 mt-2 mb-1 w-100">
                                 { fileName ? fileName : <><i className="bi bi-paperclip fs-4"></i> Subir imagen</> }
                             </span>
                             </label>
 
-                            <input className="form-control d-none" type="file" accept=".png, .jpg, .jpeg" id="portadaJuego" onChange={ handleImageChange } />
+                            <input className="form-control d-none" type="file" accept=".png, .jpg, .jpeg" id="portadaJuego" onClick={ handleImageChange } />
                             <small className="text-danger mb-3">{errors.errorPortadaJuego}</small>
+                        </div> */}
+
+                         {/* INPUT FILE 2 */}
+                         <div className="mb-4">
+                            <label htmlFor="portadaJuego" className="form-label w-100">Portada del juego
+                                <input className="form-control" type="file" accept=".png, .jpg, .jpeg" id="portadaJuego" onChange={ handleImageChange } />
+                            </label>
+
+                            <small className="text-danger mb-3">{errors.errorPortadaJuego}</small>
+                                <span className="archivo-imagen dm-sans py-2 mt-2 mb-1 w-100">
+                                    { fileName ? fileName : <><i className="bi bi-paperclip fs-4"></i> Subir imagen</>  }
+                                </span>
                         </div>
 
                             <div className="d-flex justify-content-evenly border-0">
