@@ -85,6 +85,9 @@ const PanelAdmin = () => {
                 </div>
               </div>
             </div>
+            <a
+              className="text-white text-decoration-none" href="/"
+            ><i className="bi bi-house"></i> Volver a inicio</a>
             <div
               className="p-2 text-center boton-panel"
               style={{ cursor: "pointer" }}
