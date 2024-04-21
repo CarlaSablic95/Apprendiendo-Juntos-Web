@@ -28,6 +28,11 @@
     border: 3px solid #ffffff;
 }
 
+li::marker {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
 /* TIPOGRAFIAS */
 
 body {
@@ -180,7 +185,7 @@ a {
 
 .card-form {
     border-radius: 30px !important;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .title-card {
@@ -193,7 +198,7 @@ a {
     box-shadow: 0 0 0 0.25rem rgb(246 161 0 / 25%);
 }
 
-.img-alumno {
+.img-alumno, .img-maestro {
     cursor: pointer;
 }
 
@@ -369,9 +374,9 @@ aside {
 
 /* MEDIA QUERIES */
 @media (width <= 992px) {
-    .card-form {
+    /* .card-form {
         max-width: 60%;
-    }
+    } */
 
     .splide__slide {
         width: 60% !important;

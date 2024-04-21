@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import MostrarContrasenia from "./images/ver.png";
 import OcultarContrasenia from "./images/ocultar.png";
@@ -17,6 +17,12 @@ const FormLogin = () => {
         errorInicioSesion: ""
     });
     
+    useEffect(() => {
+        const nombreUsuario = localStorage.getItem("nombreUsuario");
+        const avatarUsuario = localStorage.getItem("avatarUsuario");
+    }, []);
+
+
     const handleMostrarPass = () => {
         setMostrarPass(!mostrarPass);
     }
@@ -52,16 +58,11 @@ const FormLogin = () => {
             try {
                 setLoading(true);
                 const auth = getAuth();
-                const userCredential = await signInWithEmailAndPassword(auth, email, contrasenia)
-                // .then((userCredential) => {
-                //     console.log("CREDENCIAL DE USUARIO: ", userCredential);
-                // })
-                // Obtengo el usuario
-                const user = userCredential.user;
-
-                localStorage.setItem("nombreUsuario", user.displayName);
-                localStorage.setItem("avatarUsuario", user.photoURL);
-
+                await signInWithEmailAndPassword(auth, email, contrasenia)
+                .then((userCredential) => {
+                    console.log("CREDENCIAL DE USUARIO: ", userCredential);
+                })
+               
                 // REDIRECCIÓN
                 navigate("/");
             } catch(error) {
@@ -84,6 +85,8 @@ const FormLogin = () => {
 
     return (
         <form className="py-5 px-5" onSubmit={ handleLoginForm }>
+            
+            
             <div className="mb-3">
                 <div className="form-floating mb-3">
                     <input type="email" className={`form-control ${  errors.email && 'is-invalid' }`} id="floatingInputEmail" placeholder="juan_gomez@gmail.com" 

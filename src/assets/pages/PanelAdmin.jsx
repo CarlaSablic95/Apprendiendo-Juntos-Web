@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import CrearActividad from "../components/FormActividades/CrearActividad";
 import EditarActividad from "../components/FormActividades/EditarActividad";
 import EliminarActividad from "../components/FormActividades/EliminarActividad";
@@ -6,17 +6,10 @@ import TablaActividades from "../components/TablaActividades/TablaActividades";
 import TablaAlumnos from "../components/TablaAlumnos/TablaAlumnos";
 import CerrarSesion from "../components/Auth/CerrarSesion";
 
-
-// FIREBASE
-
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 const PanelAdmin = () => {
   const [mostrarTablaActividades, setMostrarTablaActividades] = useState(true);
-  const [usuario, setUsuario] = useState(null); // Estado para almacenar datos del usuario
 
-
-  const handleTablaActividades = () => {
+    const handleTablaActividades = () => {
     setMostrarTablaActividades(true);
   };
 
@@ -24,34 +17,15 @@ const PanelAdmin = () => {
     setMostrarTablaActividades(false);
   };
 
+
+
   // Obtengo el nombre y el apellido que guardé en local storage al crear el usuario
   const nombre = localStorage.getItem("nombre");
-  const apellido = localStorage.getItem("apellido");
   const avatar = localStorage.getItem("avatar");
-  // useEffect para obtener datos del usuario actual
-  const auth = getAuth();
-  useEffect(() => {
-    onAuthStateChanged(auth, (usuario) => {
-      if (usuario) {
-        setUsuario({
-          uid: usuario.uid,
-          nombre: usuario.displayName, // Extraer nombre del nombre completo si está disponible
-          avatar: usuario.photoURL, // Usar photoURL para avatar si está disponible
-        });
 
-        console.log(
-          "USUARIO REGISTRADO: ",
-          usuario.uid,
-          " ",
-          usuario.email,
-          " ",
-          usuario.displayName,
-          " ",
-          usuario.photoURL
-        );
-      }
-    });
-  }, [auth]);
+  console.log("AVATAR: ", avatar);
+  console.log("NOMBRE: ", nombre);
+
 
   return (
     <section className="container-fluid">
@@ -62,7 +36,7 @@ const PanelAdmin = () => {
               <div className="text-center p-2">
                 <h4 className="text-white my-4">Apprendiendo Juntos</h4>
               </div>
-              {usuario && ( // Mostrar información del usuario solo si está autenticado
+
                 <div className="text-center text-white mb-5 py-3">
                   <img
                     src={avatar}
@@ -70,10 +44,9 @@ const PanelAdmin = () => {
                     className="mb-3 rounded-circle border"
                   />
                   <p className="mb-0">
-                    {nombre} {apellido}
+                    {nombre}
                   </p>
                 </div>
-              )}
 
               <div className="text-center text-white d-flex flex-column">
                 <div className="p-2 boton-panel" style={{ cursor: "pointer" }} onClick={handleTablaActividades}>

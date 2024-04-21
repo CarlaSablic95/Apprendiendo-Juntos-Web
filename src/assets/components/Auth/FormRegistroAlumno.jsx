@@ -92,7 +92,7 @@ const FormRegistroAlumno = () => {
         if (!email.trim()) {
             setErrors(prevState => ({
                 ...prevState,
-                errorEmail: "El email es obligatorio"
+                errorEmail: "El email es requerido"
             }));
         } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
             setErrors(prevState => ({
@@ -106,10 +106,10 @@ const FormRegistroAlumno = () => {
                 ...prevState,
                 errorPassword: "La contraseña es requerida"
             }))
-        } else if (password.length < 6) {
+        } else if (password.length < 8) {
             setErrors(prevState => ({
                 ...prevState,
-                errorPassword: "La contraseña debe tener al menos 6 caracteres"
+                errorPassword: "La contraseña debe tener al menos 8 caracteres"
             }));
         }
 
@@ -129,7 +129,6 @@ const FormRegistroAlumno = () => {
                             nombre: nombre,
                             avatar: selectedImage
                         });
-                        console.log("Documento guardado con ID: ", docRef.id);
                         
                         setForm(prevState => ({
                             ...prevState,
@@ -138,7 +137,8 @@ const FormRegistroAlumno = () => {
                             email: email,
                             password: password
                         }));
-
+                        
+                        console.log("ÉXITO: Documento guardado con ID ", docRef.id);
                         // Guardo el nombre en localStorage
                         localStorage.setItem("nombreUsuario", nombre);
                         localStorage.setItem("avatarUsuario", selectedImage);
@@ -175,6 +175,7 @@ const FormRegistroAlumno = () => {
     }
 
     return (
+        <>
             <form className="py-4 px-5" onSubmit={ handleForm }>
                 <p>Elegir avatar<span className="text-danger">*</span></p>
                 <div className="mb-4 d-flex justify-content-center align-items-center">
@@ -245,6 +246,8 @@ const FormRegistroAlumno = () => {
                 <span>Si ya tenés cuenta. <Link to="/iniciar-sesion" className="mb-3">Iniciá sesión</Link></span>
             </div>
             </form>
+            <Link className='bg-primary rounded-4 text-center py-2 mb-0 text-white' to="/registro-admin">Acceso para administrador</Link>
+            </>
     )
 }
 

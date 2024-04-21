@@ -8,7 +8,7 @@ import IniciarSesion from './assets/pages/IniciarSesion';
 import Footer from './assets/components/Footer/Footer';
 import Juegos from './assets/pages/Juegos';
 import PanelAdmin from './assets/pages/PanelAdmin';
-import CuentoAntoine from './assets/pages/cuentos/CuentoAntoine';
+import CuentoSimon from './assets/pages/cuentos/CuentoSimon';
 
 
 const Layout = ({ children }) => {
@@ -33,7 +33,7 @@ function App() {
           {/* Componentes con Header y Footer, que se renderizarán cuando las rutas coincidan con la url actual */}
           <Route path='/' element={ <Layout><Inicio /></Layout> } />
           <Route path='/juegos' element={ <Layout><Juegos /></Layout>  } />
-          <Route path='/cuento-antoine' element={ <Layout><CuentoAntoine/></Layout> } />
+          <Route path='/cuento-simon' element={ <Layout><CuentoSimon/></Layout> } />
 
           {/* Componentes sin Header ni Footer */}
           <Route path='/panel-admin' element={ <PanelAdmin /> } />
