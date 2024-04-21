@@ -110,7 +110,7 @@ const EditarActividad = ({ idActividad }) => {
 
                                     <div className="d-flex justify-content-evenly border-0">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" className="btn btn-primary" onClick={actualizarActividad}>Aceptar</button>
+                                        <button type="button" className="btn btn-primary" onClick={actualizarActividad}>Editar</button>
                                     </div>
                                 </form>
                             </div>

@@ -32,7 +32,7 @@ const EliminarActividad = ({ idActividad }) => {
 
                         <div className="d-flex justify-content-evenly border-0">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                <button type="button" className="btn btn-danger" onClick={ borrarActividad } disabled={ loading }>{ loading ? <><span className="loader"></span> Eliminando</> : "Sí"}</button>
+                                <button type="button" className="btn btn-danger" onClick={ borrarActividad } disabled={ loading }>{ loading ? <><span className="loader"></span> Eliminando</> : "Eliminar"}</button>
                         </div>
                     </div>
                     </div>
