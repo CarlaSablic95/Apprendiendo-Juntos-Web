@@ -7,11 +7,11 @@ import VocalO from "./img/vocales/vocal-o.png";
 import VocalU from "./img/vocales/vocal-u.png";
 
 // AUDIO
-import SonidoA from "./audio/vocales/vocal-a.mp3"
-import SonidoE from "./audio/vocales/vocal-e.mp3"
-import SonidoI from "./audio/vocales/vocal-i.mp3"
-import SonidoO from "./audio/vocales/vocal-o.mp3"
-import SonidoU from "./audio/vocales/vocal-u.mp3"
+import SonidoA from "./audio/vocales/vocal-a.mp3";
+import SonidoE from "./audio/vocales/vocal-e.mp3";
+import SonidoI from "./audio/vocales/vocal-i.mp3";
+import SonidoO from "./audio/vocales/vocal-o.mp3";
+import SonidoU from "./audio/vocales/vocal-u.mp3";
 
 const Vocales = () => {
     const arrayVocales = [
@@ -49,7 +49,7 @@ const Vocales = () => {
     }
 
     return(
-            <div className="col-10 col-md-6 mb-4">
+            <div className="col-10 col-md-6 py-3 mb-4">
             <h2>Vocales</h2>
             <p>Presioná cada vocal para escuchar su sonido:</p>
                 { arrayVocales.map((vocal, index) => (

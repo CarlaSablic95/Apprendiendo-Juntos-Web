@@ -11,7 +11,7 @@ import K from "./img/consonantes/k.png";
 import L from "./img/consonantes/l.png";
 import M from "./img/consonantes/m.png";
 import N from "./img/consonantes/n.png";
-// // import Ñ from "./img/consonantes/ñ.png";
+import Ñ from "./img/consonantes/n.png";
 import P from "./img/consonantes/p.png";
 import Q from "./img/consonantes/q.png";
 import R from "./img/consonantes/r.png";
@@ -35,7 +35,7 @@ import SonidoK from "./audio/consonantes/k.mp3";
 import SonidoL from "./audio/consonantes/l.mp3";
 import SonidoM from "./audio/consonantes/m.mp3";
 import SonidoN from "./audio/consonantes/n.mp3";
-// // import SonidoÑ from "./audio/consonantes/ñ.mp3";
+import SonidoÑ from "./audio/consonantes/ñ.mp3";
 import SonidoP from "./audio/consonantes/p.mp3";
 import SonidoQ from "./audio/consonantes/q.mp3";
 import SonidoR from "./audio/consonantes/r.mp3";
@@ -94,10 +94,10 @@ const Consonantes = () => {
       nombre: N,
       audio: SonidoN
     },
-    // {
-    //   nombre: Ñ,
-    //   audio: SonidoN
-    // },
+    {
+      nombre: Ñ,
+      audio: SonidoÑ
+    },
     {
       nombre: P,
       audio: SonidoP
@@ -153,7 +153,7 @@ const Consonantes = () => {
   }
 
   return (
-    <div className="col-10 col-md-6">
+    <div className="col-10 col-md-6 py-3 mb-4">
       <h2>Consonantes</h2>
       <p>Presioná cada consonante para escuchar su sonido:</p>
 

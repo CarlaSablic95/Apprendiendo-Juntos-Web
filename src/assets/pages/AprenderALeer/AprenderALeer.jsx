@@ -1,5 +1,7 @@
 import Vocales from "./Vocales.jsx";
 import Consonantes from "./Consonantes.jsx";
+import Numeros from "./Numeros.jsx";
+import Colores from "./Colores.jsx";
 
 const AprenderALeer = () => {
 
@@ -10,6 +12,9 @@ const AprenderALeer = () => {
             <div className="row justify-content-evenly text-center">
                 <Vocales />
                 <Consonantes />
+                <hr />
+                <Numeros />
+                <Colores />
             </div>
             
         </section>
