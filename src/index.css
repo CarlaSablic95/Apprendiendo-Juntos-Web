@@ -98,6 +98,10 @@ a {
     background-color: var(--primary-color) !important;
 }
 
+.btn-vocal-a:hover, .btn-vocal-a:active  {
+    background-color: #ff659642 !important;
+}
+
 /* FONDOS */
 .fondo-form {
     background-image: url("../src/assets/components/Auth/images/fondo-form.svg");
