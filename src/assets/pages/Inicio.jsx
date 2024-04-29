@@ -4,6 +4,7 @@ import Chico from "../img/chico.webp";
 import Button from "../components/Button/Button";
 import FuncionamientoApp from "../components/FuncionamientoApp/FuncionamientoApp";
 
+
 const Inicio = () => {
     return (
         <>
@@ -75,6 +76,7 @@ const Inicio = () => {
             </div>
 
         </section>
+
         </>
     )
 }

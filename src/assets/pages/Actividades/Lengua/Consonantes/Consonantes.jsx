@@ -1,27 +1,26 @@
-import { useState } from "react";
 // IMAGENES
-import B from "./img/consonantes/b.png";
-import C from "./img/consonantes/c.png";
-import D from "./img/consonantes/d.png";
-import F from "./img/consonantes/f.png";
-import G from "./img/consonantes/g.png";
-import H from "./img/consonantes/h.png";
-import J from "./img/consonantes/j.png";
-import K from "./img/consonantes/k.png";
-import L from "./img/consonantes/l.png";
-import M from "./img/consonantes/m.png";
-import N from "./img/consonantes/n.png";
-import Ñ from "./img/consonantes/n.png";
-import P from "./img/consonantes/p.png";
-import Q from "./img/consonantes/q.png";
-import R from "./img/consonantes/r.png";
-import S from "./img/consonantes/s.png";
-import T from "./img/consonantes/t.png";
-import V from "./img/consonantes/v.png";
-import W from "./img/consonantes/w.png";
-import X from "./img/consonantes/x.png";
-import Y from "./img/consonantes/y.png";
-import Z from "./img/consonantes/z.png";
+import B from "./img/b.png";
+import C from "./img/c.png";
+import D from "./img/d.png";
+import F from "./img/f.png";
+import G from "./img/g.png";
+import H from "./img/h.png";
+import J from "./img/j.png";
+import K from "./img/k.png";
+import L from "./img/l.png";
+import M from "./img/m.png";
+import N from "./img/n.png";
+import Ñ from "./img/ñ.png";
+import P from "./img/p.png";
+import Q from "./img/q.png";
+import R from "./img/r.png";
+import S from "./img/s.png";
+import T from "./img/t.png";
+import V from "./img/v.png";
+import W from "./img/w.png";
+import X from "./img/x.png";
+import Y from "./img/y.png";
+import Z from "./img/z.png";
 
 // AUDIO
 import SonidoB from "./audio/consonantes/b.mp3";
@@ -49,7 +48,7 @@ import SonidoZ from "./audio/consonantes/z.mp3";
 
 
 const Consonantes = () => {
-  const consonantes = [
+  const arrayConsonantes = [
     {
       nombre: B,
       audio: SonidoB
@@ -140,8 +139,6 @@ const Consonantes = () => {
     },
   ];
 
-  const [ escuchar, setEscuchar ] = useState(false);
-
   const EscucharConsonante = async (audio) => {
     const consonante = new Audio(audio);
     try {
@@ -153,11 +150,13 @@ const Consonantes = () => {
   }
 
   return (
-    <div className="col-10 col-md-6 py-3 mb-4">
-      <h2>Consonantes</h2>
-      <p>Presioná cada consonante para escuchar su sonido:</p>
+    <section className="container py-5 mb-4">
+      <div>
+        <h2>Consonantes</h2>
+        <p>Presioná cada consonante para escuchar su sonido:</p>
+      </div>
 
-      { consonantes.map((consonante, index) => (
+      { arrayConsonantes.map((consonante, index) => (
         <button
           key={ index }
           className="btn btn-light rounded-circle border-dark p-0 mx-3 mb-2"
@@ -170,7 +169,7 @@ const Consonantes = () => {
           />
         </button>
       )) }
-    </div>
+    </section>
 
   );
 };

@@ -188,22 +188,18 @@ const FormRegistroAlumno = () => {
                     }} aria-label="My Favorite Images">
                     <SplideSlide className='container d-flex justify-content-center'>
                         <img src={ Nene } alt="Ícono de nene" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === Nene ? "border border-success" : ""}`} onClick={ () => handleImageClick(Nene) } />
-
                     </SplideSlide>
 
                     <SplideSlide className='container d-flex justify-content-center'>
                         <img src={ Batman } alt="Ícono de Batman" className={`rounded-circle img-alumno shadow-sm border-2 ${selectedImage === Batman ? "border border-success" : ""}`} onClick={ () => handleImageClick(Batman) } />
-                    
                     </SplideSlide>
 
                     <SplideSlide className='container d-flex justify-content-center'>
                         <img src={ Nena } alt="Ícono de nena" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === Nena ? "border border-success" : ""}`} onClick={ () => handleImageClick(Nena) } />
-                    
                     </SplideSlide>
 
                     <SplideSlide className='container d-flex justify-content-center'>
                         <img src={ TinkerBell } alt="Ícono de Tinker Bell" className={`img-alumno rounded-circle shadow-sm border-2 ${selectedImage === TinkerBell ? "border border-success" : ""}`} onClick={ () => handleImageClick(TinkerBell) } />
-                    
                     </SplideSlide>
                     
                 </Splide>
