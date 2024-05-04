@@ -181,9 +181,17 @@ const Piano = () => {
                   position: tecla.position,
                   left: tecla.left,
                   borderRadius: tecla.borderRadius,
-                  boxShadow: teclaPresionada === index ? "inset 0px 0px 10px #000000" : "none"
+                  boxShadow: teclaPresionada === index ? "inset 0px 0px 10px #3C3C3C" : "none"
                 }}
                 className="btn text-center border-0 d-flex justify-content-center align-items-end"
+
+                onTouchStart={() => {
+                  setTeclaPresionada(index);
+                  escucharTecla(tecla.audio)
+                }}
+
+                onTouchEnd={() => { () => setTeclaPresionada(null)}}
+
                 onMouseDown={() => {
                   setTeclaPresionada(index);
                   escucharTecla(tecla.audio)
