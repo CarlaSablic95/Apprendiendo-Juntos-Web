@@ -19,13 +19,13 @@ const Inicio = () => {
                     <div className="carousel-item active" data-bs-interval="8000">
                         <div className="container">
                             <div className="row justify-content-evenly align-items-center">
-                                <div className="col-6">
+                                <div className="col-10 col-md-6">
                                     <h1>Apprendamos Juntos</h1>
                                     <p className="pe-5 mb-0">Nuestra plataforma está pensada para que padres e hijos aprendan juntos a estudiar, a través de juegos educativos que serán un complemento a la educación escolar del niño.</p>
                                     <p className="pe-5">Para niños de 6 a 8 años.</p>
                                     <Button title="Conoce más" / >
                                 </div>
-                                <div className="col-6 mt-5 text-center d-flex
+                                <div className="col-6 d-none d-md-block mt-5 text-center d-flex
                         justify-content-center position-relative">
                                     <div className="imagen-1">
                                         <img src={ MamaHijo } alt="Imagen de una mamá estudiando con su hijo" className="rounded-circle py-5 filtro-sombra   img-fluid" />
@@ -42,11 +42,11 @@ const Inicio = () => {
                     <div className="carousel-item" data-bs-interval="8000">
                         <div className="container">
                             <div className="row justify-content-evenly align-items-center">
-                                <div className="col-6">
+                                <div className="col-10 col-md-6">
                                     <h2>Beneficios</h2>
                                     <p className="pe-5">En nuestra plataforma, podrás estudiar junto a tus hijos, a través de juegos que serán un complemento a su educación escolar.</p>
                                 </div>
-                                <div className="col-6 mt-5 text-center">
+                                <div className="col-6 d-none d-md-block mt-5 text-center">
                                     <img src={ Chico } alt="Imagen de niño emocionado" className="imagen-1 rounded-circle py-5" />
                                 </div>
                             </div>

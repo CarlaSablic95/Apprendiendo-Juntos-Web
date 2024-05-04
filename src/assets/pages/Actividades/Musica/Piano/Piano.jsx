@@ -1,3 +1,4 @@
+import { useState } from "react";
 // AUDIO NOTAS DE PIANO
 import SonidoDo from "../audio/do.mp3";
 import SonidoRe from "../audio/re.mp3";
@@ -13,136 +14,145 @@ const Piano = () => {
     {
       nombre: "DO",
       audio: SonidoDo,
-      backgroundColor: "#e54a4a",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "DO# / REb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "58px",
+      left: "123px",
     },
 
     {
       nombre: "RE",
       audio: SonidoRe,
-      backgroundColor: "#f3a71d",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "RE# / MIb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "138px",
+      left: "229px",
     },
 
     {
       nombre: "MI",
       audio: SonidoMi,
-      backgroundColor: "#eeee3b",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "FA",
       audio: SonidoFa,
-      backgroundColor: "#83de83",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "FA# / SOLb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "297px",
+      left: "424px",
     },
 
     {
       nombre: "SOL",
       audio: SonidoSol,
-      backgroundColor: "#4c82f3",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "SOL# / LAb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "377px",
+      left: "526px",
     },
     
     {
       nombre: "LA",
       audio: SonidoLa,
-      backgroundColor: "#df9ff5",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "LA# / SIb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "457px",
+      left: "625px",
     },
 
 
     {
       nombre: "SI",
       audio: SonidoSi,
-      backgroundColor: "#7940d6",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      left: "578px",
+      borderRadius: "2rem"
     },
 
     {
       nombre: "DO",
       audio: SonidoDoOctava,
-      backgroundColor: "#de3a3a",
+      backgroundColor: "#fefefe",
       width: "100px",
       height: "250px",
-      // borderRadius: "5rem"
+      borderRadius: "2rem"
     },
 
     {
       nombre: "DO# / REb",
       audio: SonidoDo,
-      backgroundColor: "black",
-      width: "25px",
+      backgroundColor: "#3c3c3c",
+      color: "#fefefe",
+      width: "45px",
       height: "150px",
       position: "absolute",
-      left: "617px",
+      left: "823px",
     },
   ];
+
+  const [ teclaPresionada, setTeclaPresionada ] = useState(null);
 
   const escucharTecla = async (audio) => {
     const tecla = new Audio(audio);
@@ -155,10 +165,11 @@ const Piano = () => {
   };
 
   return (
-    <section className="container py-5 vh-100">
-      <div className="py-5 position-relative d-flex justify-content-center">
-          <div className="d-flex justify-content-center bg-dark position-absolute z-3" style={{ width:"80%", height: "20vh" }}>
-          
+    <section className="container py-5 vh-100 d-flex justify-content-center align-items-center">
+          <div className="position-relative piano-container">
+            <div className="piano">
+            </div>
+          <div className="d-flex flex-wrap p-5 rounded-5">
             {arrayTeclasPiano.map((tecla, index) => (
               <button
                 key={index}
@@ -166,18 +177,27 @@ const Piano = () => {
                   width: tecla.width,
                   height: tecla.height,
                   backgroundColor: tecla.backgroundColor,
+                  color: tecla.color,
                   position: tecla.position,
                   left: tecla.left,
-                  borderRadius: tecla.borderRadius
+                  borderRadius: tecla.borderRadius,
+                  boxShadow: teclaPresionada === index ? "inset 0px 0px 10px #000000" : "none"
                 }}
-                className="btn text-center border"
-                onClick={() => escucharTecla(tecla.audio)}
+                className="btn text-center border-0 d-flex justify-content-center align-items-end"
+                onMouseDown={() => {
+                  setTeclaPresionada(index);
+                  escucharTecla(tecla.audio)
+
+                }}
+                onMouseUp = { () => setTeclaPresionada(null)}
+                onMouseLeave = { () => setTeclaPresionada(null)}
+
               >
                 {tecla.nombre}
               </button>
-            ))} 
+          ))} 
+        </div>
           </div>
-      </div>
     </section>
   );
 };

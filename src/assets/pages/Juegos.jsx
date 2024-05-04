@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Juegos = () => {
     return (
-        <section className="container-fluid">
-            <div className="row justify-content-center pt-5">
-                    <h2 className="text-center">Materias</h2>
+        <section className="container py-5">
+            <div className="row justify-content-center py-5">
+                    <h2 className="text-center my-4">Materias</h2>
                        
                         {/* JUEGOS / ACTIVIDADES (LENGUA) */}
                         <div className="row justify-content-evenly" style={{ height: "40vh" }}>
-                            <div className="col-10 card mb-5 py-4">
+                            <div className="col-10 col-md-5 card mb-5 py-4">
                                 <h4 className="text-center">Lengua</h4>
 
                                 <Splide className="container-fluid" options={{ 
@@ -37,12 +37,9 @@ const Juegos = () => {
                                 </SplideSlide>    
                             </Splide>
                             </div>
-                        </div>
-                        <hr />
 
-                        {/* JUEGOS / ACTIVIDADES (MATEMÁTICA) */}
-                        <div className="row justify-content-evenly" style={{ height: "50vh" }}>
-                            <div className="col-10 card mb-5 py-4">
+                                {/* JUEGOS / ACTIVIDADES (MATEMÁTICA) */}
+                            <div className="col-10 col-md-5 card mb-5 py-4">
                                 <h4 className="text-center">Matemática</h4>
 
                                 <Splide className="container-fluid" options={{ 
@@ -69,14 +66,12 @@ const Juegos = () => {
                                 </SplideSlide>    
                             </Splide>
                             </div>
-
-                           
                         </div>
-                        <hr />
+                        
 
                         {/* JUEGOS / ACTIVIDADES (MÚSICA) */}
                         <div className="row justify-content-evenly" style={{ height: "40vh" }}>
-                            <div className="col-10 card mb-5 py-4">
+                            <div className="col-10 col-md-5 card mb-5 py-4">
                                 <h4 className="text-center">Música</h4>
 
                                 <Splide className="container-fluid" options={{ 
@@ -103,13 +98,8 @@ const Juegos = () => {
                                 </SplideSlide>    
                             </Splide>
                             </div>
-                        </div>
-                </div>
-                <hr />
-
-                {/* JUEGOS / ACTIVIDADES (MÚSICA) */}
-                <div className="row justify-content-evenly" style={{ height: "40vh" }}>
-                            <div className="col-10 card mb-5 py-4">
+                        {/* JUEGOS / ACTIVIDADES (MÚSICA) */}
+                            <div className="col-10 col-md-5 card mb-5 py-4">
                                 <h4 className="text-center">Dibujo</h4>
 
                                 <Splide className="container-fluid" options={{ 
@@ -120,7 +110,7 @@ const Juegos = () => {
                                 pagination: true
                                 }} aria-label="My Favorite Images">
                                 <SplideSlide className='container d-flex justify-content-center'>
-                                    <Link to="/piano">Dibujar</Link>
+                                    <Link to="#">Dibujar</Link>
                                 </SplideSlide>
 
                                 <SplideSlide className='container d-flex justify-content-center'>
@@ -137,6 +127,8 @@ const Juegos = () => {
                             </Splide>
                             </div>
                         </div>
+                </div>
+
         </section>
     )
 }
