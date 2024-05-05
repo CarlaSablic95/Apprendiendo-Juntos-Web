@@ -1,13 +1,22 @@
 import { useState } from "react";
 // AUDIO NOTAS DE PIANO
-import SonidoDo from "../audio/do.mp3";
-import SonidoRe from "../audio/re.mp3";
-import SonidoMi from "../audio/mi.mp3";
-import SonidoFa from "../audio/fa.mp3";
-import SonidoSol from "../audio/sol.mp3";
-import SonidoLa from "../audio/la.mp3";
-import SonidoSi from "../audio/si.mp3";
-import SonidoDoOctava from "../audio/do-octava.mp3";
+import SonidoDo from "../audio/piano/do.mp3";
+import SonidoRe from "../audio/piano/re.mp3";
+import SonidoMi from "../audio/piano/mi.mp3";
+import SonidoFa from "../audio/piano/fa.mp3";
+import SonidoSol from "../audio/piano/sol.mp3";
+import SonidoLa from "../audio/piano/la.mp3";
+import SonidoSi from "../audio/piano/si.mp3";
+import SonidoDoOctava from "../audio/piano/do-octava.mp3";
+
+import DoSostenido from "../audio/piano/do-sostenido.mp3";
+import ReSostenido from "../audio/piano/re-sostenido.mp3";
+import FaSostenido from "../audio/piano/fa-sostenido.mp3";
+import SolSostenido from "../audio/piano/sol-sostenido.mp3";
+import LaSostenido from "../audio/piano/la-sostenido.mp3";
+import DoSostenidoOctava from "../audio/piano/do-sostenido-octava.mp3";
+
+
 
 const Piano = () => {
   const arrayTeclasPiano = [
@@ -21,8 +30,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "DO# / REb",
-      audio: SonidoDo,
+      nombre: "DO# REb",
+      audio: DoSostenido,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -41,8 +50,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "RE# / MIb",
-      audio: SonidoDo,
+      nombre: "RE# MIb",
+      audio: ReSostenido,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -70,8 +79,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "FA# / SOLb",
-      audio: SonidoDo,
+      nombre: "FA# SOLb",
+      audio: FaSostenido,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -90,8 +99,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "SOL# / LAb",
-      audio: SonidoDo,
+      nombre: "SOL# LAb",
+      audio: SolSostenido,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -110,8 +119,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "LA# / SIb",
-      audio: SonidoDo,
+      nombre: "LA# SIb",
+      audio: LaSostenido,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -141,8 +150,8 @@ const Piano = () => {
     },
 
     {
-      nombre: "DO# / REb",
-      audio: SonidoDo,
+      nombre: "DO# REb",
+      audio: DoSostenidoOctava,
       backgroundColor: "#3c3c3c",
       color: "#fefefe",
       width: "45px",
@@ -181,9 +190,9 @@ const Piano = () => {
                   position: tecla.position,
                   left: tecla.left,
                   borderRadius: tecla.borderRadius,
-                  boxShadow: teclaPresionada === index ? "inset 0px 0px 10px #3C3C3C" : "none"
+                  boxShadow: teclaPresionada === index ? "inset 0px 0px 10px #3c3c3c70" : "0px 19px 10px -6px rgba(0,0,0,0.1)"
                 }}
-                className="btn text-center border-0 d-flex justify-content-center align-items-end"
+                className="btn text-center border- d-flex justify-content-center align-items-end"
 
                 onTouchStart={() => {
                   setTeclaPresionada(index);
@@ -201,6 +210,7 @@ const Piano = () => {
                 onMouseLeave = { () => setTeclaPresionada(null)}
 
               >
+                {/* <span className="bg-warning rounded-circle px-2 py-2" style={{ fontSize: "15px" }}>{tecla.nombre}</span> */}
                 {tecla.nombre}
               </button>
           ))} 

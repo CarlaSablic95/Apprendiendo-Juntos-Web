@@ -15,7 +15,7 @@ const CuentoSimon = () => {
                             <img src={ Pintor } alt="Imagen de un niño pintor" className="rounded-4 shadow-sm" style={{ width: "450px" }}  />
                         </div>
                             <div className="container text-center text-md-start">
-                                <p style={{ fontSize:"1.1rem" }}>Había una vez en un pequeño pueblo de Argentina, un niño llamado Simón, conocido por todos por su gran pasión: la pintura. Con su gran creatividad y su pincel en mano, Simón creaba mundos de colores que dejaban a todos maravillados.</p>
+                                <p style={{ fontSize:"1.1rem" }}>Había una vez en un pequeño pueblo de Argentina, un niño llamado Simón, conocido por todos por su gran pasión: la pintura. Con su gran creatividad y su pincel en mano, Simón creaba mundos de colores que dejaba a todos maravillados.</p>
                                 <p style={{ fontSize:"1.1rem" }}>Un día, se anunció una gran competencia de pintura en el pueblo. Los mejores artistas de todas partes llegarían con años de experiencia y obras magníficas. Simón, con solo cinco años, era el participante más joven.</p>
                                 <p style={{ fontSize:"1.1rem" }}>“Son demasiado buenos, y yo solo soy un niño sin experiencia”, pensaba Simón, mirando su lienzo en blanco. Pero sus padres, viendo su tristeza, se acercaron y le dijeron: “Simón, no importa la edad o la experiencia. Dios te ha dado un talento único que puede tocar el corazón de las personas. No tenés que ganar para ser especial; ya lo sos porque Dios te creó con gran amor y con un gran propósito.”</p>
                             
