@@ -2,6 +2,7 @@
   import { app } from "../firebaseConfig/firebaseConfig";
   import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
   import { useState, useEffect } from "react";
+  import Logo from "/public/images/logo.png";
 
   const auth = getAuth(app);
 
@@ -55,7 +56,7 @@
         <nav className="navbar navbar-expand-lg py-3">
           <div className="container">
             <Link className="navbar-brand" to="/">
-              Apprendiendo Juntos
+              <img src={ Logo } alt="Logo" width="140px" />
             </Link>
             <button
               className="navbar-toggler"
