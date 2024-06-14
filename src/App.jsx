@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
+import PanelAdmin from './assets/pages/PanelAdmin';
 import Header from './assets/components/Header/Header';
 import Inicio from './assets/pages/Inicio';
 import Registro from './assets/pages/Registro';
@@ -7,8 +8,8 @@ import RegistroMaestro from './assets/components/Auth/FormRegistroMaestro';
 import IniciarSesion from './assets/pages/IniciarSesion';
 import Footer from './assets/components/Footer/Footer';
 import Juegos from './assets/pages/Juegos';
-import PanelAdmin from './assets/pages/PanelAdmin';
 import CuentoSimon from './assets/pages/Actividades/Lengua/Cuentos/CuentoSimon';
+import Abecedario from './assets/pages/Actividades/Lengua/Abecedario/Abecedario';
 import Vocales from './assets/pages/Actividades/Lengua/Vocales/Vocales';
 import Consonantes from './assets/pages/Actividades/Lengua/Consonantes/Consonantes';
 import Piano from './assets/pages/Actividades/Musica/Piano/Piano';
@@ -39,6 +40,7 @@ function App() {
           <Route path='/cuento-simon' element={ <Layout><CuentoSimon /></Layout> } />
           <Route path='/vocales' element={ <Layout><Vocales /></Layout> } />
           <Route path='/consonantes' element={ <Layout><Consonantes /></Layout> } />
+          <Route path='/abecedario' element={ <Layout><Abecedario /></Layout> } />
           <Route path='/piano' element={ <Layout><Piano /></Layout> } />
 
           {/* Componentes sin Header ni Footer */}

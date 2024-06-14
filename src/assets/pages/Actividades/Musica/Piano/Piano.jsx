@@ -174,7 +174,9 @@ const Piano = () => {
   };
 
   return (
-    <section className="container py-5 vh-100 d-flex justify-content-center align-items-center">
+    <main>
+      <h1 className="text-center">A tocar</h1>
+<section className="container py-5 d-flex justify-content-center align-items-center" style={{  minHeight: "75vh" }}>
           <div className="position-relative piano-container">
             <div className="piano">
             </div>
@@ -217,6 +219,8 @@ const Piano = () => {
         </div>
           </div>
     </section>
+    </main>
+    
   );
 };
 

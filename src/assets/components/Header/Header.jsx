@@ -52,7 +52,8 @@
   };
 
     return (
-      <header className="position-absolute w-100 z-3">
+      // <header className="position-absolute w-100 z-3">
+        <header className="">
         <nav className="navbar navbar-expand-lg py-3">
           <div className="container">
             <Link className="navbar-brand" to="/">
@@ -70,7 +71,7 @@
               <span className="navbar-toggler-icon"></span>
             </button>
             <div
-              className="collapse navbar-collapse justify-content-evenly"
+              className="collapse navbar-collapse justify-content-end"
               id="navbarNavDropdown"
             >
               <ul className="navbar-nav align-items-center">

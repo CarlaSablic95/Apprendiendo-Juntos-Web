@@ -11,7 +11,7 @@ const CuentoSimon = () => {
             <section className="container py-4">
                 <div className="mt-5 pt-5">
                         <div className="text-center mb-5">
-                                <h1 className="mb-4 fs-2 text-center">Simon, un pequeño gran artista</h1>
+                                <h1 className="mb-4 fs-2 text-center">Simón, un pequeño gran artista</h1>
                             <img src={ Pintor } alt="Imagen de un niño pintor" className="rounded-4 shadow-sm" style={{ width: "450px" }}  />
                         </div>
                             <div className="container text-center text-md-start">

@@ -29,7 +29,7 @@ const FuncionamientoApp = () => {
                         <img src={ Niña } alt="Ícono de niña" width={ 70 } className="mb-3 mx-auto filtro-sombra" />
                     </div>
                     <h4>3 - Divertirse</h4>
-                    <p>Es fundamental que te diviertas aprendiendo</p>
+                    <p>Es fundamental que te diviertas</p>
                 </div>
             </div>
         </>

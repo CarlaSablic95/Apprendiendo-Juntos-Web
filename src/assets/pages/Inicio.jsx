@@ -7,7 +7,7 @@ const Inicio = () => {
   return (
     <>
       {/* SECCIÓN PRINCIPAL */}
-      <section className="seccion-principal py-5">
+      <section className="seccion-principal">
         <div className="container">
           <div className="row justify-content-evenly align-items-center">
             <div className="col-10 col-md-6">
@@ -17,8 +17,8 @@ const Inicio = () => {
                 juntos a estudiar, a través de juegos educativos que serán un
                 complemento a la educación escolar del niño.
               </p>
-              <p className="pe-5">Para niños de 6 a 8 años.</p>
-              <Button title="Conoce más" />
+              <p className="pe-5">Para niños de 6.</p>
+              <Button title="Comenzar" />
             </div>
             <div
               className="col-6 d-none d-md-block mt-5 text-center d-flex
@@ -45,7 +45,7 @@ const Inicio = () => {
       </section>
 
       {/* SOBRE NOSOTROS */}
-      <section>
+      {/* <section>
         <div className="container">
           <h2>Acerca de</h2>
           <div className="row">
@@ -87,7 +87,7 @@ const Inicio = () => {
           </div>
           <div className="px-3"></div>
         </div>
-      </section>
+      </section> */}
 
       {/* // CÓMO FUNCIONA (PASOS PARA JUGAR) */}
 
