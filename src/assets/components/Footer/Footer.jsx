@@ -1,8 +1,12 @@
+// import Logo from "/public/images/logo-blanco.png";
+
 const Footer = () => {
     return (
         <footer className="">
-            <div className="bg-footer  py-5">
-                <p className="text-dark text-center py-4 mb-0">Copyright 2024</p>
+            <div className="bg-footer py-5">
+            <div className="d-flex flex-column text-center">
+                <small>© Apprendiendo Juntos 2024 | Todos los derechos reservados</small>
+                <small>Desarrollado por <span className="brittany fs-6">Carla Sablic ♥</span></small></div>
             </div>
         </footer>
     )

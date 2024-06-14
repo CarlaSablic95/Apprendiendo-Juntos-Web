@@ -7,17 +7,14 @@ const Inicio = () => {
   return (
     <>
       {/* SECCIÓN PRINCIPAL */}
-      <section className="seccion-principal">
+      <section className="seccion-principal pb-5 mb-5">
         <div className="container">
           <div className="row justify-content-evenly align-items-center">
             <div className="col-10 col-md-6">
-              <h1>Apprendamos Juntos</h1>
-              <p className="pe-5 mb-0">
-                Nuestra plataforma está pensada para que padres e hijos aprendan
-                juntos a estudiar, a través de juegos educativos que serán un
-                complemento a la educación escolar del niño.
+              <h1 className="mb-3">Apprendiendo Juntos</h1>
+              <p className="pe-5 mb-0 pb-3">
+              Una plataforma interactiva para niños de primer grado de primaria, donde los juegos educativos se entrelazan con la participación activa de los padres, fortaleciendo la relación familiar y apoyando el desarrollo académico de los más pequeños.
               </p>
-              <p className="pe-5">Para niños de 6.</p>
               <Button title="Comenzar" />
             </div>
             <div
@@ -45,41 +42,29 @@ const Inicio = () => {
       </section>
 
       {/* SOBRE NOSOTROS */}
-      {/* <section>
+      <section>
         <div className="container">
-          <h2>Acerca de</h2>
           <div className="row">
             <div className="col-10 col-md-4 text-center">
-              <h3>Inicio</h3>
+              <h3>Nosotros</h3>
               <p>
                 Apprendiendo juntos es una plataforma educativa interactiva que
-                nació durante la pandemia para unir a familias y mejorar el
-                conocimiento de los niños. Ofrecemos juegos que cubren materias
-                básicas, diseñados para ser divertidos y reforzar lo aprendido
-                en clases virtuales. Nuestro doble objetivo es proporcionar a
-                los niños herramientas educativas y ser una guía para los padres
-                en la educación de sus hijos.
+                nació durante la pandemia para unir a familias, y acompañar el
+                aprendizaje de los niños, por medio de juegos que comprenden las materias
+                básicas.
               </p>
             </div>
             <div className="col-10 col-md-4 text-center">
               <h3>Misión</h3>
               <p>
-                Buscamos ser parte de la solución a los desafíos educativos
-                presentados por la pandemia, ofreciendo práctica y comprensión
-                de conceptos escolares. Queremos que los padres se sientan
-                apoyados al educar a sus hijos, proporcionando recursos lúdicos
-                y efectivos. Apprendiendo juntos busca ser un complemento al
-                aprendizaje y un medio para fortalecer la relación entre padres
+              Nuestro principal propósito es ser un complemento al
+                aprendizaje del niño, y un medio para fortalecer el vínculo entre padres
                 e hijos.
               </p>
             </div>
             <div className="col-10 col-md-4 text-center">
               <h3>Visión</h3>
-              <p>
-                La plataforma es un espacio colaborativo para el crecimiento y
-                aprendizaje conjunto de padres e hijos. Como fundadora, tengo la
-                visión de expandir el equipo e incluir expertos en pedagogía y
-                enseñanza infantil. Nuestro compromiso es hacer del aprendizaje
+              <p>Nuestro compromiso es hacer del aprendizaje
                 una experiencia memorable, con cada juego representando un paso
                 hacia el futuro.
               </p>
@@ -87,7 +72,7 @@ const Inicio = () => {
           </div>
           <div className="px-3"></div>
         </div>
-      </section> */}
+      </section>
 
       {/* // CÓMO FUNCIONA (PASOS PARA JUGAR) */}
 
